@@ -5,8 +5,7 @@ import { Elements, CardElement, useStripe, useElements } from '@stripe/react-str
 import { useCart } from '../context/CartContext'
 import Button from '../components/Button'
 
-// Remplace par ta clé publique Stripe
-const stripePromise = loadStripe('VITE_STRIPE_PUBLIC_KEY_REMOVED')
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY)
 
 function CheckoutForm() {
   const stripe = useStripe()
