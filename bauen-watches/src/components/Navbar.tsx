@@ -48,7 +48,7 @@ export default function Navbar() {
           transition={{ delay: 0.4, duration: 1 }}
           className="absolute left-1/2 transform -translate-x-1/2"
         >
-          <Link to="/" className="text-3xl font-serif tracking-wide no-underline hover:text-accent">
+          <Link to="/" className="text-3xl font-serif tracking-wide no-underline text-black hover:text-accent">
             BAUEN
           </Link>
         </motion.div>
