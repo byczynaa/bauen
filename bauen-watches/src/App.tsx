@@ -11,6 +11,7 @@ import Configurateur from './pages/Configurateur'
 import Apropos from './pages/Apropos'
 import Paris from './pages/Paris'
 import LA from './pages/LA'
+import LACollection from './pages/LACollection'
 import { AnimatePresence, motion } from 'framer-motion'
 import { CartProvider } from './context/CartContext'
 
@@ -51,6 +52,7 @@ function AppRoutes() {
             <Route path="/a-propos" element={<Apropos />} />
             <Route path="/paris" element={<Paris />} />
             <Route path="/la" element={<LA />} />
+            <Route path="/pacific-collection" element={<LACollection />} />
           </Routes>
         </motion.main>
       </AnimatePresence>

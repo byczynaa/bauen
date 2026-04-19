@@ -1,6 +1,8 @@
 import Button from '../components/Button'
+import { useNavigate } from 'react-router-dom'
 
 export default function LA() {
+  const navigate = useNavigate()
   return (
     <div className="bg-base text-textMain">
       {/* Image hero */}
@@ -19,13 +21,12 @@ export default function LA() {
       {/* Section d'intention */}
       <section className="max-w-4xl mx-auto py-24 px-6 text-center">
         <h2 className="text-3xl font-serif mb-6">
-          L'innovation californienne au poignet
+          California Innovation at Your Eyes
         </h2>
         <p className="text-textSubtle leading-relaxed mb-12">
-          Inspirée par l'esprit créatif de Los Angeles, la collection <span className="font-semibold">Bauen LA</span> 
-          fusionne modernité, liberté et audace. Chaque montre incarne le rêve californien et l'innovation sans limites.
+          Inspired by the creative spirit of Los Angeles, the Bauen Pacific collection blends modernity, freedom, and boldness. Each frame embodies the California dream and limitless innovation.
         </p>
-        <Button variant="outline">Découvrir la collection Los Angeles</Button>
+        <Button variant="outline" onClick={() => navigate('/pacific-collection')}>Discover the Pacific Collection</Button>
       </section>
 
       {/* Photo ambiance */}
@@ -45,9 +46,9 @@ export default function LA() {
       {/* Bouton configurateur */}
       <section className="text-center py-20">
         <p className="text-textSubtle mb-6">
-          Créez la montre qui incarne votre style californien.
+          Create the eyewear that embodies your California style.
         </p>
-        <Button variant="primary">Accéder au configurateur</Button>
+        <Button variant="primary">Access the Configurator</Button>
       </section>
     </div>
   )

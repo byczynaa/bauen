@@ -14,9 +14,9 @@ export default function Article() {
     return (
       <section className="bg-base text-textMain min-h-screen py-20 px-6 flex items-center justify-center">
         <div className="text-center">
-          <h2 className="text-3xl font-serif mb-4">Article non trouvé</h2>
+          <h2 className="text-3xl font-serif mb-4">Article not found</h2>
           <Button variant="outline" onClick={() => navigate('/')}>
-            Retour à l'accueil
+            Back to home
           </Button>
         </div>
       </section>

@@ -10,9 +10,9 @@ export interface Frame {
 export const frames: Frame[] = [
   {
     id: 1,
-    title: 'La Gravure Precision',
-    slug: 'gravure-precision',
-    description: 'Découvrez le métier ancestral de la gravure. Chaque coup de burin est une décision, chaque trait une signature. Nos graveurs expérimentés créent des motifs uniques qui racontent l\'histoire de votre montre.',
+    title: 'Precision Engraving',
+    slug: 'precision-engraving',
+    description: 'Discover the ancient craft of engraving. Each strike of the burin is a decision, each line a signature. Our experienced engravers create unique patterns that tell the story of your eyewear.',
     images: [
       '/bauen-content/frame01/IMG_2811.jpeg',
       '/bauen-content/frame01/IMG_2812.jpeg',
@@ -22,9 +22,9 @@ export const frames: Frame[] = [
   },
   {
     id: 2,
-    title: 'L\'Assemblage Délicat',
-    slug: 'assemblage-delicat',
-    description: 'L\'assemblage d\'une montre est un art qui demande patience et précision. Nos horlogers montent chaque composant avec soin, en veillant à l\'alignement parfait de chaque rouage.',
+    title: 'Delicate Assembly',
+    slug: 'delicate-assembly',
+    description: 'Assembling eyewear is an art that requires patience and precision. Our opticians assemble each component with care, ensuring perfect alignment of every element.',
     images: [
       '/bauen-content/frame02/IMG_2815.jpeg',
       '/bauen-content/frame02/IMG_2816.jpeg',
@@ -34,9 +34,9 @@ export const frames: Frame[] = [
   },
   {
     id: 3,
-    title: 'Le Polissage Miroir',
-    slug: 'polissage-miroir',
-    description: 'Le polissage miroir transforme l\'acier brut en surface réfléchissante. Cette technique exige une maîtrise inégalée et des outils spécialisés pour obtenir cet éclat caractéristique.',
+    title: 'Mirror Polishing',
+    slug: 'mirror-polishing',
+    description: 'Mirror polishing transforms raw metal into a reflective surface. This technique requires unmatched mastery and specialized tools to achieve the characteristic shine.',
     images: [
       '/bauen-content/frame03/IMG_2880.jpeg',
       '/bauen-content/frame03/IMG_2881.jpeg',
@@ -48,9 +48,9 @@ export const frames: Frame[] = [
   },
   {
     id: 4,
-    title: 'La Teinte Élégante',
-    slug: 'teinte-elegante',
-    description: 'Les cadrans teintés à main donnent à chaque montre une personnalité unique. Nos artisans appliquent les couleurs avec précision, créant des dégradés subtils et harmonieux.',
+    title: 'Elegant Tinting',
+    slug: 'elegant-tinting',
+    description: 'Hand-tinted lenses give each pair of glasses a unique personality. Our artisans apply colors with precision, creating subtle and harmonious gradients.',
     images: [
       '/bauen-content/frame04/IMG_2893.jpeg',
       '/bauen-content/frame04/IMG_2895.jpeg',
@@ -64,25 +64,25 @@ export const frames: Frame[] = [
   },
   {
     id: 5,
-    title: 'Le Contrôle Qualité',
-    slug: 'controle-qualite',
-    description: 'Chaque montre est testée rigoureusement avant de quitter notre atelier. Nos maîtres horlogers vérifient l\'étanchéité, la précision et le fonctionnement mécanique.',
+    title: 'Quality Control',
+    slug: 'quality-control',
+    description: 'Each pair of glasses is rigorously tested before leaving our workshop. Our master opticians check the durability, precision, and optical quality.',
     images: [
       '/bauen-content/frame05/IMG_4503.jpeg',
       '/bauen-content/frame05/IMG_4504.jpeg',
       '/bauen-content/frame05/IMG_4506.jpeg',
       '/bauen-content/frame05/IMG_4510.jpeg',
       '/bauen-content/frame05/IMG_4511.jpeg',
-      '/bauen-content/frame05/IMG_4512.jpeg',
-      '/bauen-content/frame05/IMG_4513.jpeg',
+      '/bauen-content/frame05/sunnymodelpic1.JPEG',
+      '/bauen-content/frame05/sunnymodelpic2.JPEG',
     ],
     category: 'Quality',
   },
   {
     id: 6,
-    title: 'Le Bracelet Artisanal',
-    slug: 'bracelet-artisanal',
-    description: 'Nos bracelets en cuir premium sont façonnés par des artisans passionnés. Chaque point de couture est ajusté à la main, créant une union parfaite entre fonction et beauté.',
+    title: 'Artisanal Temple',
+    slug: 'artisanal-temple',
+    description: 'Our premium temple pieces are crafted by passionate artisans. Each stitch is hand-adjusted, creating a perfect union between function and beauty.',
     images: [
       '/bauen-content/frame06/IMG_4518.jpeg',
       '/bauen-content/frame06/IMG_4519.jpeg',
@@ -96,9 +96,9 @@ export const frames: Frame[] = [
   },
   {
     id: 7,
-    title: 'La Finition Finale',
-    slug: 'finition-finale',
-    description: 'Les derniers détails font toute la différence. Nos artisans appliquent les finitions finales avec une attention méticuleuse, assurant que chaque élément répond à nos standards exigeants.',
+    title: 'Final Finishing',
+    slug: 'final-finishing',
+    description: 'The final details make all the difference. Our artisans apply the finishing touches with meticulous attention, ensuring every element meets our demanding standards.',
     images: [
       '/bauen-content/frame07/IMG_4493.jpeg',
       '/bauen-content/frame07/IMG_4495.jpeg',
@@ -120,23 +120,23 @@ export interface ArtisticPiece {
 export const artisticPieces: ArtisticPiece[] = [
   {
     id: 1,
-    title: 'Macro Precision',
+    title: 'Modern Aesthetics',
     image: '/bauen-content/artistic/IMG_4499.jpeg',
-    technique: 'Macro Photography',
-    description: 'Capturant les détails infimes de nos mécanismes avec une clarté cristalline. Cette photographie macro révèle la complexité et la beauté de l\'ingénierie horlogère à l\'échelle microscopique.',
+    technique: 'Design Philosophy',
+    description: 'Modern fashion meets timeless elegance in every design we create. Our designers blend contemporary aesthetics with classic sophistication, crafting eyewear that elevates your personal style and captures the essence of refined visual culture.',
   },
   {
     id: 2,
-    title: 'Symmetry in Motion',
+    title: 'Frame Design Harmony',
     image: '/bauen-content/artistic/IMG_4512.jpeg',
-    technique: 'High-Speed Photography',
-    description: 'Un instant saisi dans le temps, montrant la parfaite symétrie de nos rouages en action. Cette image capte la danse harmonieuse entre la forme et la fonction, figée dans l\'éternité.',
+    technique: 'Frame Assembly',
+    description: 'Perfect symmetry defines our frame construction. Each component is meticulously aligned and assembled, creating eyewear that balances aesthetic beauty with ergonomic comfort and durability.',
   },
   {
     id: 3,
-    title: 'Reflection of Craftsmanship',
+    title: 'Bauen Values',
     image: '/bauen-content/artistic/IMG_4525.jpeg',
-    technique: 'Reflective Lighting',
-    description: 'La lumière danse sur les surfaces polies, révélant la finesse du travail artisanal. Cette composition joue avec la réflexion et l\'ombre pour créer une image captivante et intemporelle.',
+    technique: 'Vision & Purpose',
+    description: 'Bauen represents freedom of expression, vibrant color, genuine happiness, and unwavering purpose. Every frame we craft embodies these values, empowering you to express your unique style while celebrating the joy and individuality that eyewear brings to your life.',
   },
 ]

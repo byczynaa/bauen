@@ -19,14 +19,14 @@ export default function Paris() {
       {/* Section d'intention */}
       <section className="max-w-4xl mx-auto py-24 px-6 text-center">
         <h2 className="text-3xl font-serif mb-6">
-          L’art du temps façonné à la française
+          The art of vision crafted in the French tradition
         </h2>
         <p className="text-textSubtle leading-relaxed mb-12">
-          Entre tradition et modernité, la collection <span className="font-semibold">Bauen Paris</span> 
-          célèbre la précision, la rigueur et l’élégance intemporelle.  
-          Inspirée des ateliers horlogers européens, elle rend hommage au savoir-faire et au style français.
+          Between tradition and modernity, the <span className="font-semibold">Bauen Paris</span> 
+          collection celebrates precision, rigor and timeless elegance.  
+          Inspired by European optical workshops, it pays homage to French craftsmanship and style.
         </p>
-        <Button variant="outline">Découvrir la collection Paris</Button>
+        <Button variant="outline">Discover the Paris collection</Button>
       </section>
 
       {/* Photo ambiance */}
@@ -46,9 +46,9 @@ export default function Paris() {
       {/* Bouton configurateur */}
       <section className="text-center py-20">
         <p className="text-textSubtle mb-6">
-          Créez la montre qui incarne votre élégance.
+          Create the eyewear that embodies your elegance.
         </p>
-        <Button variant="primary">Accéder au configurateur</Button>
+        <Button variant="primary">Access the configurator</Button>
       </section>
     </div>
   )

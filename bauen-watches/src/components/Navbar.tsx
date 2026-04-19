@@ -13,6 +13,7 @@ export default function Navbar() {
 
   const navItems = [
     { name: 'Boutique', path: '/boutique' },
+    { name: 'Pacific Collection', path: '/pacific-collection' },
     { name: 'Configurateur', path: '/configurateur' },
     { name: 'À propos', path: '/a-propos' },
   ]

@@ -11,23 +11,23 @@ export default function Home() {
       {/* Section slogan */}
       <section className="flex flex-col items-center justify-center text-center py-32 px-6">
         <h1 className="text-5xl font-serif mb-6 tracking-tight">
-          L'élégance à votre poignet
+          Elegance on your eyes
         </h1>
         <p className="max-w-xl text-textSubtle mb-12 leading-relaxed">
-          Des montres façonnées entre Los Angeles et Paris : l'union du
-          savoir-faire et de la créativité.
+          Eyewear crafted between Los Angeles and Paris: the union of
+          craftsmanship and creativity.
         </p>
         <div className="flex gap-6">
-          <Button variant="outline">Découvrir la collection</Button>
-          <Button variant="primary">Personnaliser la vôtre</Button>
+          <Button variant="outline">Discover the collection</Button>
+          <Button variant="primary">Create your own</Button>
         </div>
       </section>
 
       {/* Artistic Gallery */}
       <section className="max-w-6xl mx-auto py-20 px-6">
-        <h2 className="text-4xl font-serif mb-4 text-center">Le Savoir-Faire</h2>
+        <h2 className="text-4xl font-serif mb-4 text-center">Craftsmanship</h2>
         <p className="text-center text-textSubtle mb-16 max-w-2xl mx-auto">
-          Explorez les techniques et procédés qui transforment chaque matière brute en œuvre d'art horlogère.
+          Explore the techniques and processes that transform raw materials into optical artistry and timeless eyewear.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {artisticPieces.map((piece) => (

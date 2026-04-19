@@ -10,9 +10,9 @@ export default function Cart() {
     return (
       <section className="bg-base text-textMain min-h-screen py-20 px-6 flex items-center justify-center">
         <div className="text-center">
-          <h2 className="text-3xl font-serif mb-4">Votre panier est vide</h2>
+          <h2 className="text-3xl font-serif mb-4">Your cart is empty</h2>
           <Button variant="outline" onClick={() => navigate('/boutique')}>
-            Retour à la boutique
+            Back to shop
           </Button>
         </div>
       </section>
@@ -22,7 +22,7 @@ export default function Cart() {
   return (
     <section className="bg-base text-textMain min-h-screen py-20 px-6">
       <div className="max-w-3xl mx-auto">
-        <h2 className="text-4xl font-serif mb-8 text-center">Mon panier</h2>
+        <h2 className="text-4xl font-serif mb-8 text-center">My cart</h2>
         <ul className="space-y-6 mb-8">
           {items.map((item) => (
             <li key={item.id} className="flex justify-between items-center">
@@ -43,7 +43,7 @@ export default function Cart() {
         </ul>
 
         <div className="flex justify-between items-center mb-8">
-          <span className="text-xl font-medium">Total :</span>
+          <span className="text-xl font-medium">Total:</span>
           <span className="text-2xl font-serif">{total.toFixed(2)} €</span>
         </div>
 

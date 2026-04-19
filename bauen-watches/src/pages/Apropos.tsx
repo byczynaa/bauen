@@ -2,14 +2,14 @@ export default function Apropos() {
   return (
     <section className="bg-base text-textMain min-h-screen py-20 px-6">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-4xl font-serif mb-10 text-center">À propos</h2>
+        <h2 className="text-4xl font-serif mb-10 text-center">About</h2>
         <p className="text-textSubtle mb-6 leading-relaxed">
-          Bauen Watches est une maison horlogère indépendante fondée sur la passion du design et de la précision.  
-          Chaque création incarne l’union du savoir-faire artisanal et de l’innovation contemporaine.
+          Bauen is an independent eyewear house founded on the passion for design and precision.
+          Each creation embodies the union of artisanal craftsmanship and contemporary innovation.
         </p>
         <p className="text-textSubtle leading-relaxed">
-          Inspirées par les codes du luxe intemporel, nos montres sont pensées pour les amateurs d’élégance sobre et d’excellence technique.  
-          Notre mission : créer des pièces uniques, personnalisables et durables, façonnées entre Paris et Los Angeles.
+          Inspired by the codes of timeless luxury, our eyewear is designed for lovers of sober elegance and technical excellence.
+          Our mission: to create unique, customizable and durable pieces, crafted between Paris and Los Angeles.
         </p>
       </div>
     </section>

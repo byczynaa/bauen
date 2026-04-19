@@ -5,7 +5,7 @@ export default defineConfig({
   theme: {
     extend: {
       colors: {
-        base: '#ffffff',        // fond principal
+        base: '#FAF7F2',        // fond principal (warm cream)
         surface: '#f5f5f5',     // fond secondaire
         textMain: '#111111',    // texte noir élégant
         textSubtle: '#555555',  // gris doux

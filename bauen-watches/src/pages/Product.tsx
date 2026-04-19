@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Button from '../components/Button'
 import { useCart } from '../context/CartContext'
 
@@ -8,17 +8,57 @@ const watches = [
     id: 1,
     name: 'Abysse',
     price: 329,
-    image: '/images/blue00.jpeg',
-    description: 'Plongez dans les profondeurs avec Abysse. Cette collection marine incarne la sérénité des abysses avec ses teintes bleues captivantes et son mécanisme précis. Chaque montre est une porte ouverte sur l\'océan infini.',
-    images: ['/images/blue00.jpeg', '/images/blue01.jpeg', '/images/blue02.jpeg', '/images/blue03.jpeg'],
+    image: '/bauen-content/frame01/IMG_2811.jpeg',
+    description: 'Dive into the depths with Abysse. This marine collection embodies the serenity of the abyss with its captivating blue tones and precise craftsmanship. Each frame opens a window to the infinite ocean.',
+    images: ['/bauen-content/frame01/IMG_2811.jpeg', '/bauen-content/frame01/IMG_2812.jpeg', '/bauen-content/frame01/IMG_2813.jpeg'],
   },
   {
     id: 2,
     name: 'Labeur',
     price: 319,
-    image: '/images/brown00.jpeg',
-    description: 'Labeur célèbre le travail, la persévérance et l\'excellence. Avec ses nuances chaudes et rustiques, cette collection incarne l\'esprit artisanal. Une montre pour ceux qui créent et construisent avec passion.',
-    images: ['/images/brown00.jpeg', '/images/brown01.jpeg'],
+    image: '/bauen-content/frame02/IMG_2815.jpeg',
+    description: 'Labeur celebrates work, perseverance and excellence. With its warm and rustic nuances, this collection embodies the artisanal spirit. A frame for those who create and build with passion.',
+    images: ['/bauen-content/frame02/IMG_2815.jpeg', '/bauen-content/frame02/IMG_2816.jpeg', '/bauen-content/frame02/IMG_2817.jpeg'],
+  },
+  {
+    id: 201,
+    name: 'Sunset Boulevard',
+    price: 349,
+    image: '/bauen-content/frame03/IMG_2880.jpeg',
+    description: 'Inspired by the golden hour over Los Angeles, Sunset Boulevard captures the vibrant warmth of California sunsets. With warm amber tones and sleek modern frames, this piece celebrates LA\'s iconic style.',
+    images: ['/bauen-content/frame03/IMG_2880.jpeg', '/bauen-content/frame03/IMG_2881.jpeg', '/bauen-content/frame03/IMG_2884.jpeg', '/bauen-content/frame03/IMG_2885.jpeg', '/bauen-content/frame03/IMG_2888.jpeg'],
+  },
+  {
+    id: 202,
+    name: 'Pacific Dreams',
+    price: 339,
+    image: '/bauen-content/frame04/IMG_2893.jpeg',
+    description: 'Feel the ocean breeze with Pacific Dreams. This collection draws inspiration from LA\'s stunning coastline with cool ocean blues and minimalist design. Perfect for those who embrace the California beach lifestyle.',
+    images: ['/bauen-content/frame04/IMG_2893.jpeg', '/bauen-content/frame04/IMG_2895.jpeg', '/bauen-content/frame04/IMG_2896.jpeg', '/bauen-content/frame04/IMG_2898.jpeg', '/bauen-content/frame04/IMG_2899.jpeg', '/bauen-content/frame04/IMG_2900.jpeg', '/bauen-content/frame04/IMG_2903.jpeg'],
+  },
+  {
+    id: 203,
+    name: 'City Lights',
+    price: 359,
+    image: '/bauen-content/frame06/IMG_4518.jpeg',
+    description: 'Experience the magic of LA\'s vibrant nightlife with City Lights. Bold frames and sophisticated styling make this collection perfect for those who own the night. Symbol of LA\'s creative energy.',
+    images: ['/bauen-content/frame06/IMG_4518.jpeg', '/bauen-content/frame06/IMG_4519.jpeg', '/bauen-content/frame06/IMG_4520.jpeg', '/bauen-content/frame06/IMG_4521.jpeg', '/bauen-content/frame06/IMG_4522.jpeg', '/bauen-content/frame06/IMG_4525.jpeg', '/bauen-content/frame06/IMG_4526.jpeg'],
+  },
+  {
+    id: 204,
+    name: 'Desert Rose',
+    price: 329,
+    image: '/bauen-content/frame07/IMG_4493.jpeg',
+    description: 'Blend the warm desert landscape with modern elegance. Desert Rose combines earthy tones with contemporary design, capturing the essence of LA\'s diverse natural beauty.',
+    images: ['/bauen-content/frame07/IMG_4493.jpeg', '/bauen-content/frame07/IMG_4495.jpeg', '/bauen-content/frame07/IMG_4498.jpeg', '/bauen-content/frame07/IMG_4499.jpeg'],
+  },
+  {
+    id: 207,
+    name: 'Venice',
+    price: 349,
+    image: '/bauen-content/frame05/IMG_4503.jpeg',
+    description: 'Capture the bohemian spirit of Venice Beach with Venice sunglasses. These modern shades embody the eclectic, artistic vibe of LA\'s iconic beach community with vibrant colors and free-spirited design. Featuring a subtle red glow that becomes clear in the California sun.',
+    images: ['/bauen-content/frame05/IMG_4503.jpeg', '/bauen-content/frame05/sunnymodelpic1.JPEG', '/bauen-content/frame05/IMG_4504.jpeg', '/bauen-content/frame05/IMG_4506.jpeg', '/bauen-content/frame05/IMG_4510.jpeg', '/bauen-content/frame05/IMG_4511.jpeg', '/bauen-content/frame05/sunnymodelpic2.JPEG', '/bauen-content/frame05/sunnymodelpic3.JPEG'],
   },
 ]
 
@@ -27,15 +67,39 @@ export default function Product() {
   const navigate = useNavigate()
   const { addToCart } = useCart()
   const [addedToCart, setAddedToCart] = useState(false)
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const product = watches.find((w) => w.id === parseInt(id || '0'))
+
+  // Navigation functions
+  const goToNextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % product!.images.length)
+  }
+
+  const goToPrevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + product!.images.length) % product!.images.length)
+  }
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') {
+        goToPrevImage()
+      } else if (e.key === 'ArrowRight') {
+        goToNextImage()
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [product])
 
   if (!product) {
     return (
       <section className="bg-base text-textMain min-h-screen py-20 px-6 flex items-center justify-center">
         <div className="text-center">
-          <h2 className="text-3xl font-serif mb-4">Produit non trouvé</h2>
+          <h2 className="text-3xl font-serif mb-4">Product not found</h2>
           <Button variant="outline" onClick={() => navigate('/boutique')}>
-            Retour à la boutique
+            Back to shop
           </Button>
         </div>
       </section>
@@ -47,13 +111,90 @@ export default function Product() {
       {/* Product layout: left images, right info */}
       <section className="max-w-6xl mx-auto py-20 px-6 flex flex-col md:flex-row gap-12">
         {/* images column */}
-        <div className="md:w-1/2">
-          <div className="mb-4">
-            <img
-              src={product.image}
-              alt={product.name}
-              className="w-full h-auto object-cover rounded-lg"
-            />
+        <div className="md:w-1/2 relative">
+          {/* Desktop: Vertical thumbnail sidebar */}
+          <div className="hidden md:flex md:flex-col gap-3 mr-6 absolute left-0 top-0 h-full overflow-y-auto">
+            {product.images.map((image, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentImageIndex(index)}
+                className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 ${
+                  currentImageIndex === index
+                    ? 'border-accent shadow-lg scale-105'
+                    : 'border-border hover:border-accent/70 hover:shadow-md'
+                }`}
+                aria-label={`View ${product.name} image ${index + 1}`}
+              >
+                <img
+                  src={image}
+                  alt={`${product.name} thumbnail ${index + 1}`}
+                  className="w-full h-full object-cover"
+                />
+              </button>
+            ))}
+          </div>
+
+          {/* Main image container */}
+          <div className="md:ml-24 relative group">
+            <div className="relative overflow-hidden rounded-lg shadow-lg">
+              <img
+                src={product.images[currentImageIndex]}
+                alt={`${product.name} - view ${currentImageIndex + 1}`}
+                className="w-full h-auto object-cover transition-opacity duration-300"
+              />
+
+              {/* Overlay navigation arrows - only show on hover/focus */}
+              {product.images.length > 1 && (
+                <>
+                  <button
+                    onClick={goToPrevImage}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-textMain rounded-full p-2 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-accent"
+                    aria-label="Previous image"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+
+                  <button
+                    onClick={goToNextImage}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-textMain rounded-full p-2 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-accent"
+                    aria-label="Next image"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                </>
+              )}
+
+              {/* Image counter */}
+              <div className="absolute bottom-4 right-4 bg-black/70 text-white px-3 py-1 rounded-full text-sm">
+                {currentImageIndex + 1} / {product.images.length}
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile: Horizontal thumbnail row below image */}
+          <div className="md:hidden mt-4 flex gap-2 overflow-x-auto pb-2">
+            {product.images.map((image, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentImageIndex(index)}
+                className={`flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 ${
+                  currentImageIndex === index
+                    ? 'border-accent shadow-lg scale-105'
+                    : 'border-border hover:border-accent/70 hover:shadow-md'
+                }`}
+                aria-label={`View ${product.name} image ${index + 1}`}
+              >
+                <img
+                  src={image}
+                  alt={`${product.name} thumbnail ${index + 1}`}
+                  className="w-full h-full object-cover"
+                />
+              </button>
+            ))}
           </div>
         </div>
 
@@ -63,16 +204,16 @@ export default function Product() {
           <p className="text-2xl text-accent font-light mb-6">{product.price} €</p>
           <p className="text-textSubtle mb-6">{product.description}</p>
 
-          {/* Résumé / caractéristiques */}
+          {/* Features */}
           <div className="mb-12">
-            <h3 className="text-xl font-serif mb-4">Caractéristiques</h3>
+            <h3 className="text-xl font-serif mb-4">Features</h3>
             <ul className="text-textSubtle space-y-2 text-sm">
-              <li>✓ Mouvement à quartz haute précision</li>
-              <li>✓ Boîtier acier inoxydable 42mm</li>
-              <li>✓ Verre minéral résistant aux rayures</li>
-              <li>✓ Bracelet cuir premium</li>
-              <li>✓ Étanchéité 5ATM</li>
-              <li>✓ Garantie 2 ans</li>
+              <li>✓ High-quality acetate and metal materials</li>
+              <li>✓ Compatible with prescription lenses</li>
+              <li>✓ Beautiful unique colors</li>
+              <li>✓ Lightweight and comfortable design</li>
+              <li>✓ UV protection coating</li>
+              <li>✓ 2-year warranty</li>
             </ul>
           </div>
 
@@ -86,27 +227,27 @@ export default function Product() {
                 setTimeout(() => setAddedToCart(false), 2000)
               }}
             >
-              {addedToCart ? '✓ Ajouté au panier' : 'Ajouter au panier'}
+              {addedToCart ? '✓ Added to cart' : 'Add to cart'}
             </Button>
             <Button variant="outline" onClick={() => navigate('/cart')}>
-              Voir le panier
+              View cart
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Caractéristiques */}
+      {/* Features */}
       <section className="max-w-4xl mx-auto py-20 px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
           <div>
-            <h3 className="text-xl font-serif mb-4">Caractéristiques</h3>
+            <h3 className="text-xl font-serif mb-4">Features</h3>
             <ul className="text-textSubtle space-y-2 text-sm">
-              <li>✓ Mouvement à quartz haute précision</li>
-              <li>✓ Boîtier acier inoxydable 42mm</li>
-              <li>✓ Verre minéral résistant aux rayures</li>
-              <li>✓ Bracelet cuir premium</li>
-              <li>✓ Étanchéité 5ATM</li>
-              <li>✓ Garantie 2 ans</li>
+              <li>✓ High-quality acetate and metal materials</li>
+              <li>✓ Compatible with prescription lenses</li>
+              <li>✓ Beautiful unique colors</li>
+              <li>✓ Lightweight and comfortable design</li>
+              <li>✓ UV protection coating</li>
+              <li>✓ 2-year warranty</li>
             </ul>
           </div>
         </div>
