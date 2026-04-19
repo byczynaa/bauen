@@ -12,10 +12,10 @@ const watches = [
   },
   {
     id: 2,
-    name: 'Labeur',
+    name: 'Chance',
     price: 319,
     image: '/bauen-content/frame02/IMG_2815.jpeg',
-    description: 'Labeur celebrates work, perseverance and excellence. With its warm and rustic nuances, this collection embodies the artisanal spirit. A frame for those who create and build with passion.',
+    description: 'Chance celebrates opportunity, serendipity and possibility. With its warm and rustic nuances, this collection embodies the spirit of adventure. A frame for those who embrace life\'s unexpected moments.',
     images: ['/bauen-content/frame02/IMG_2815.jpeg', '/bauen-content/frame02/IMG_2816.jpeg', '/bauen-content/frame02/IMG_2817.jpeg'],
   },
   {
