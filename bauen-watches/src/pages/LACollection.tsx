@@ -48,19 +48,19 @@ export default function LACollection() {
   return (
     <div className="text-textMain">
       {/* Hero Section with Lifestyle Image */}
-      <section className="relative h-[85vh] flex items-end justify-center overflow-hidden pb-20">
+      <section className="relative h-[90vh] flex items-end justify-center overflow-hidden pb-16">
         <img
           src="/bauen-content/artistic/Cafemodel.JPEG"
           alt="LA lifestyle"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover transform scale-105 group-hover:scale-110 transition-transform duration-[2000ms] ease-out"
         />
-        <div className="absolute inset-0 bg-black/35"></div>
-        <div className="relative z-10 max-w-4xl mx-auto text-center px-6">
-          <h1 className="text-6xl md:text-7xl font-serif mb-6 text-white tracking-wide">
+        <div className="absolute inset-0 bg-black/25"></div>
+        <div className="relative z-10 max-w-5xl mx-auto text-center px-6">
+          <h1 className="text-7xl md:text-8xl lg:text-9xl font-serif mb-4 text-white tracking-tight leading-none">
             Pacific Collection
           </h1>
-          <p className="text-xl md:text-2xl text-white/95 mb-8 leading-relaxed max-w-2xl mx-auto font-light">
-            Eyewear inspired by Los Angeles—bold, creative, endlessly innovative.
+          <p className="text-2xl md:text-3xl text-white/90 leading-tight max-w-3xl mx-auto font-light tracking-wide">
+            Eyewear for Los Angeles living.
           </p>
         </div>
       </section>
