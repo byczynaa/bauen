@@ -4,6 +4,34 @@ import Button from '../components/Button'
 import { useCart } from '../context/CartContext'
 
 const watches = [
+    {
+      id: 101,
+      name: 'Drift',
+      price: 359,
+      image: '/bauen-content/frame01/IMG_2811.jpeg',
+      description: 'A frame inspired by movement and freedom, with a design that flows like the Pacific tides.',
+      images: [
+        '/bauen-content/frame01/IMG_2811.jpeg',
+        '/bauen-content/frame01/IMG_2812.jpeg',
+        '/bauen-content/frame01/IMG_2813.jpeg',
+      ],
+    },
+    {
+      id: 102,
+      name: 'Glow',
+      price: 359,
+      image: '/bauen-content/frame06/IMG_4518.jpeg',
+      description: 'Glow shines with subtle highlights and a luminous finish, perfect for nights on the coast.',
+      images: [
+        '/bauen-content/frame06/IMG_4518.jpeg',
+        '/bauen-content/frame06/IMG_4519.jpeg',
+        '/bauen-content/frame06/IMG_4520.jpeg',
+        '/bauen-content/frame06/IMG_4521.jpeg',
+        '/bauen-content/frame06/IMG_4522.jpeg',
+        '/bauen-content/frame06/IMG_4525.jpeg',
+        '/bauen-content/frame06/IMG_4526.jpeg',
+      ],
+    },
   {
     id: 1,
     name: 'Abysse',

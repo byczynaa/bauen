@@ -4,7 +4,7 @@ import Button from '../components/Button'
 // New Pacific Collection frames using unused models
 const laProducts = [
   {
-    id: 401,
+    id: 101,
     name: 'Drift',
     price: 359,
     image: '/bauen-content/frame01/IMG_2811.jpeg',
@@ -16,19 +16,23 @@ const laProducts = [
     ],
   },
   {
-    id: 402,
-    name: 'Waves',
-    price: 329,
-    image: '/bauen-content/frame02/IMG_2815.jpeg',
-    description: 'Waves captures the rhythm and energy of the coast, with contours that echo the ocean’s pulse.',
+    id: 102,
+    name: 'Glow',
+    price: 359,
+    image: '/bauen-content/frame06/IMG_4518.jpeg',
+    description: 'Glow shines with subtle highlights and a luminous finish, perfect for nights on the coast.',
     images: [
-      '/bauen-content/frame02/IMG_2815.jpeg',
-      '/bauen-content/frame02/IMG_2816.jpeg',
-      '/bauen-content/frame02/IMG_2817.jpeg',
+      '/bauen-content/frame06/IMG_4518.jpeg',
+      '/bauen-content/frame06/IMG_4519.jpeg',
+      '/bauen-content/frame06/IMG_4520.jpeg',
+      '/bauen-content/frame06/IMG_4521.jpeg',
+      '/bauen-content/frame06/IMG_4522.jpeg',
+      '/bauen-content/frame06/IMG_4525.jpeg',
+      '/bauen-content/frame06/IMG_4526.jpeg',
     ],
   },
   {
-    id: 403,
+    id: 202,
     name: 'Sway',
     price: 339,
     image: '/bauen-content/frame04/IMG_2893.jpeg',
@@ -44,19 +48,15 @@ const laProducts = [
     ],
   },
   {
-    id: 404,
-    name: 'Glow',
-    price: 359,
-    image: '/bauen-content/frame06/IMG_4518.jpeg',
-    description: 'Glow shines with subtle highlights and a luminous finish, perfect for nights on the coast.',
+    id: 203,
+    name: 'Roam',
+    price: 329,
+    image: '/bauen-content/frame02/IMG_2815.jpeg',
+    description: 'Roam captures the rhythm and energy of the coast, with contours that echo the ocean’s pulse.',
     images: [
-      '/bauen-content/frame06/IMG_4518.jpeg',
-      '/bauen-content/frame06/IMG_4519.jpeg',
-      '/bauen-content/frame06/IMG_4520.jpeg',
-      '/bauen-content/frame06/IMG_4521.jpeg',
-      '/bauen-content/frame06/IMG_4522.jpeg',
-      '/bauen-content/frame06/IMG_4525.jpeg',
-      '/bauen-content/frame06/IMG_4526.jpeg',
+      '/bauen-content/frame02/IMG_2815.jpeg',
+      '/bauen-content/frame02/IMG_2816.jpeg',
+      '/bauen-content/frame02/IMG_2817.jpeg',
     ],
   },
 ];
@@ -71,13 +71,25 @@ export default function LACollection() {
           alt="LA lifestyle"
           className="absolute inset-0 w-full h-full object-cover transform scale-105 group-hover:scale-110 transition-transform duration-[2000ms] ease-out"
         />
-        <div className="absolute inset-0 bg-black/25"></div>
-        <div className="relative z-10 max-w-5xl mx-auto text-center px-6">
-          <h1 className="text-7xl md:text-8xl lg:text-9xl font-serif mb-4 text-white tracking-tight leading-none">
+        {/* Stronger gradient overlay for readability */}
+        <div className="absolute inset-0 pointer-events-none" style={{background: 'linear-gradient(to top, rgba(0,0,0,0.38) 0%, rgba(0,0,0,0.18) 40%, rgba(0,0,0,0) 100%)'}}></div>
+        <div className="relative z-10 max-w-5xl mx-auto text-center px-6 flex flex-col items-center justify-end w-full" style={{minHeight: '60vh'}}>
+          <h1 className="text-7xl md:text-8xl lg:text-9xl font-serif mb-4 text-white tracking-tight leading-none" style={{textShadow: '0px 2px 10px rgba(0,0,0,0.5)'}}>
             Pacific Collection
           </h1>
-          <p className="text-2xl md:text-3xl text-white/90 leading-tight max-w-3xl mx-auto font-light tracking-wide">
-            Eyewear for Los Angeles living.
+          <p
+            className="text-2xl md:text-3xl leading-tight max-w-3xl mx-auto font-light tracking-wide mb-2 md:mb-0"
+            style={{
+              color: '#F5F5F5',
+              textShadow: '0px 2px 10px rgba(0,0,0,0.5)',
+              marginTop: '2.5rem',
+              marginBottom: '0',
+              position: 'relative',
+              left: '0',
+              maxWidth: '90%',
+            }}
+          >
+            For endless days and sunlit hours.
           </p>
         </div>
       </section>
@@ -88,13 +100,13 @@ export default function LACollection() {
           <h2 className="text-4xl md:text-5xl font-serif mb-6 text-textMain">
             California Dream
           </h2>
-          <p className="text-lg text-textSubtle leading-relaxed max-w-2xl mx-auto">
-            From Venice Beach boardwalks to Hollywood Hills sunsets, each frame captures the essence of LA living.
+          <p className="text-[1.15rem] md:text-[1.25rem] text-[#232323] leading-[1.65] max-w-2xl mx-auto" style={{color:'#232323', lineHeight:1.65}}>
+            Defined by warmth, movement, and a calm appreciation of the everyday—capturing a carefree sense of ease, expression, and the understated energy of life on the coast.
           </p>
         </div>
       </section>
 
-      {/* Products Section */}
+      {/* Products Section - Original Responsive Grid */}
       <section className="bg-base py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
@@ -102,28 +114,17 @@ export default function LACollection() {
               The Collection
             </h2>
             <p className="text-xl text-textSubtle leading-relaxed max-w-2xl mx-auto">
-              Seven frames, seven stories of California life.
+              Four frames, worn your way.
             </p>
           </div>
-          <div className="grid grid-cols-2 gap-12">
-            <div className="flex flex-col gap-12">
-              {/* First column: Chance, Pacific Dreams */}
-              <div className="group">
-                <WatchCard {...laProducts.find(p => p.name === 'Chance')} />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+            {laProducts.map(product => (
+              <div className="group" key={product.id}>
+                <a href={`/product/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                  <WatchCard {...product} />
+                </a>
               </div>
-              <div className="group">
-                <WatchCard {...laProducts.find(p => p.name === 'Pacific Dreams')} />
-              </div>
-            </div>
-            <div className="flex flex-col gap-12">
-              {/* Second column: Abyss, City Lights */}
-              <div className="group">
-                <WatchCard {...laProducts.find(p => p.name === 'Abyss')} />
-              </div>
-              <div className="group">
-                <WatchCard {...laProducts.find(p => p.name === 'City Lights')} />
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>

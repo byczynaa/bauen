@@ -31,17 +31,17 @@ export default function WatchCard({ id, name, price, image, images = [] }: Watch
 
   return (
     <div
-      className="group cursor-pointer transform transition-all duration-500 ease-out hover:scale-105 hover:-translate-y-2 hover:shadow-2xl"
+      className="group cursor-pointer transform transition-all duration-500 ease-out hover:scale-105 hover:-translate-y-2 hover:shadow-2xl rounded-2xl"
       onClick={handleClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       {/* Product Image */}
-      <div className="relative overflow-hidden rounded-lg mb-6 bg-gray-50 shadow-lg group-hover:shadow-xl transition-shadow duration-500">
+      <div className="relative overflow-hidden rounded-2xl mb-6 bg-gray-50 shadow-lg group-hover:shadow-xl transition-shadow duration-500">
         <img
           src={currentImage}
           alt={name}
-          className="w-full h-96 object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+          className="w-full h-96 object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out rounded-2xl"
         />
       </div>
 
