@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "dev": "vite"
+  },
   "dependencies": {
     "framer-motion": "^12.23.26",
     "lucide-react": "^0.562.0",

@@ -1,14 +1,14 @@
 import WatchCard from '../components/WatchCard'
 import Button from '../components/Button'
 
-// New Pacific Collection frames using unused models
+// Refined Pacific Collection frames (short, minimal descriptions)
 const laProducts = [
   {
     id: 101,
     name: 'Drift',
     price: 359,
     image: '/bauen-content/frame01/IMG_2811.jpeg',
-    description: 'A frame inspired by movement and freedom, with a design that flows like the Pacific tides.',
+    description: 'Movement, uninterrupted.',
     images: [
       '/bauen-content/frame01/IMG_2811.jpeg',
       '/bauen-content/frame01/IMG_2812.jpeg',
@@ -20,7 +20,7 @@ const laProducts = [
     name: 'Glow',
     price: 359,
     image: '/bauen-content/frame06/IMG_4518.jpeg',
-    description: 'Glow shines with subtle highlights and a luminous finish, perfect for nights on the coast.',
+    description: 'Soft light, subtle shine.',
     images: [
       '/bauen-content/frame06/IMG_4518.jpeg',
       '/bauen-content/frame06/IMG_4519.jpeg',
@@ -36,7 +36,7 @@ const laProducts = [
     name: 'Sway',
     price: 339,
     image: '/bauen-content/frame04/IMG_2893.jpeg',
-    description: 'Sway is for those who move with the breeze—light, effortless, and always in motion.',
+    description: 'Effortless, always in motion.',
     images: [
       '/bauen-content/frame04/IMG_2893.jpeg',
       '/bauen-content/frame04/IMG_2895.jpeg',
@@ -52,7 +52,7 @@ const laProducts = [
     name: 'Roam',
     price: 329,
     image: '/bauen-content/frame02/IMG_2815.jpeg',
-    description: 'Roam captures the rhythm and energy of the coast, with contours that echo the ocean’s pulse.',
+    description: 'Contours in rhythm.',
     images: [
       '/bauen-content/frame02/IMG_2815.jpeg',
       '/bauen-content/frame02/IMG_2816.jpeg',
@@ -61,90 +61,89 @@ const laProducts = [
   },
 ];
 
+import { Link } from 'react-router-dom'
+
 export default function LACollection() {
   return (
-    <div className="text-textMain">
+    <div className="bg-base text-textMain min-h-screen">
+      {/* Optional: Minimal Collection Navigation */}
+      <nav className="w-full flex justify-center pt-8 pb-4">
+        <div className="flex gap-8 text-sm font-serif text-textSubtle">
+          <Link to="/paris" className="hover:text-accent transition">Paris</Link>
+          <span className="text-accent">Pacific</span>
+        </div>
+      </nav>
+
       {/* Hero Section with Lifestyle Image */}
-      <section className="relative h-[90vh] flex items-end justify-center overflow-hidden pb-16">
+      <section className="relative h-[70vh] flex items-end justify-center overflow-hidden pb-12">
         <img
           src="/bauen-content/artistic/Cafemodel.JPEG"
           alt="LA lifestyle"
-          className="absolute inset-0 w-full h-full object-cover transform scale-105 group-hover:scale-110 transition-transform duration-[2000ms] ease-out"
+          className="absolute inset-0 w-full h-full object-cover scale-105 transition-transform duration-[2000ms] ease-out"
         />
-        {/* Stronger gradient overlay for readability */}
-        <div className="absolute inset-0 pointer-events-none" style={{background: 'linear-gradient(to top, rgba(0,0,0,0.38) 0%, rgba(0,0,0,0.18) 40%, rgba(0,0,0,0) 100%)'}}></div>
-        <div className="relative z-10 max-w-5xl mx-auto text-center px-6 flex flex-col items-center justify-end w-full" style={{minHeight: '60vh'}}>
-          <h1 className="text-7xl md:text-8xl lg:text-9xl font-serif mb-4 text-white tracking-tight leading-none" style={{textShadow: '0px 2px 10px rgba(0,0,0,0.5)'}}>
+        {/* Subtle gradient overlay for readability */}
+        <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/40 via-black/10 to-transparent"></div>
+        <div className="relative z-10 max-w-4xl mx-auto text-center px-6 flex flex-col items-center justify-end w-full min-h-[50vh]">
+          <h1 className="text-5xl md:text-6xl font-serif mb-3 text-white tracking-tight leading-none drop-shadow-lg">
             Pacific Collection
           </h1>
-          <p
-            className="text-2xl md:text-3xl leading-tight max-w-3xl mx-auto font-light tracking-wide mb-2 md:mb-0"
-            style={{
-              color: '#F5F5F5',
-              textShadow: '0px 2px 10px rgba(0,0,0,0.5)',
-              marginTop: '2.5rem',
-              marginBottom: '0',
-              position: 'relative',
-              left: '0',
-              maxWidth: '90%',
-            }}
-          >
-            For endless days and sunlit hours.
+          <p className="text-xl md:text-2xl font-light text-white/90 tracking-wide mb-0 mt-2 max-w-2xl mx-auto drop-shadow">
+            Sunlit, understated, always in motion.
           </p>
         </div>
       </section>
 
       {/* Editorial Break - Tagline Section */}
-      <section className="bg-surface py-24 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-serif mb-6 text-textMain">
-            California Dream
+      <section className="bg-surface py-20 px-6">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-serif mb-5 text-textMain">
+            California, reimagined
           </h2>
-          <p className="text-[1.15rem] md:text-[1.25rem] text-[#232323] leading-[1.65] max-w-2xl mx-auto" style={{color:'#232323', lineHeight:1.65}}>
-            Defined by warmth, movement, and a calm appreciation of the everyday—capturing a carefree sense of ease, expression, and the understated energy of life on the coast.
+          <p className="text-base md:text-lg text-textSubtle leading-relaxed max-w-2xl mx-auto">
+            Warmth, movement, and a calm appreciation of the everyday—capturing a sense of ease and the quiet energy of life on the coast.
           </p>
         </div>
       </section>
 
-      {/* Products Section - Original Responsive Grid */}
-      <section className="bg-base py-24 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl font-serif mb-6">
+      {/* Products Section - 2 Column Responsive Grid */}
+      <section className="bg-base py-20 px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-14">
+            <h2 className="text-4xl font-serif mb-4">
               The Collection
             </h2>
-            <p className="text-xl text-textSubtle leading-relaxed max-w-2xl mx-auto">
+            <p className="text-lg text-textSubtle leading-relaxed max-w-2xl mx-auto">
               Four frames, worn your way.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-14">
             {laProducts.map(product => (
               <div className="group" key={product.id}>
-                <a href={`/product/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                <Link to={`/product/${product.id}`} className="block no-underline text-inherit">
                   <WatchCard {...product} />
-                </a>
+                </Link>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Visual Break - Full Width Image */}
-      <section className="relative h-[50vh] overflow-hidden">
+      {/* Visual Break - Editorial Lifestyle Image */}
+      <section className="relative h-[44vh] overflow-hidden">
         <img
-          src="/bauen-content/frame04/IMG_2893.jpeg"
-          alt="Pacific Coast landscape"
+          src="/bauen-content/artistic/Cafemodel.JPEG"
+          alt="Pacific mood"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20"></div>
       </section>
 
-      {/* CTA Section */}
-      <section className="bg-surface py-24 px-6 text-center">
-        <div className="max-w-4xl mx-auto">
-          <h3 className="text-4xl font-serif mb-6">Find Your California Style</h3>
-          <p className="text-lg text-textSubtle mb-10 max-w-2xl mx-auto leading-relaxed">
-            Customize your perfect frame with our Configurator. Create eyewear that embodies the LA spirit.
+      {/* CTA Section - Minimal, Fashion-forward */}
+      <section className="bg-surface py-20 px-6 text-center">
+        <div className="max-w-3xl mx-auto">
+          <h3 className="text-2xl md:text-3xl font-serif mb-5">Made to be worn your way</h3>
+          <p className="text-base text-textSubtle mb-8 max-w-xl mx-auto leading-relaxed">
+            Configure your own. Minimal, intentional, yours.
           </p>
           <Button variant="primary" className="px-8 py-4 text-lg">Start Customizing</Button>
         </div>

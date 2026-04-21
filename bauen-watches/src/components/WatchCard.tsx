@@ -31,28 +31,30 @@ export default function WatchCard({ id, name, price, image, images = [] }: Watch
 
   return (
     <div
-      className="group cursor-pointer transform transition-all duration-500 ease-out hover:scale-105 hover:-translate-y-2 hover:shadow-2xl rounded-2xl"
+      className="group cursor-pointer transition-all duration-500 ease-out hover:scale-[1.025] hover:shadow-xl rounded-3xl bg-surface p-6 flex flex-col gap-6"
       onClick={handleClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Product Image */}
-      <div className="relative overflow-hidden rounded-2xl mb-6 bg-gray-50 shadow-lg group-hover:shadow-xl transition-shadow duration-500">
+      {/* Product Image - Large, Editorial */}
+      <div className="relative overflow-hidden rounded-2xl aspect-[4/5] bg-base flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow duration-500">
         <img
           src={currentImage}
           alt={name}
-          className="w-full h-96 object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out rounded-2xl"
+          className="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700 ease-out"
         />
       </div>
 
-      {/* Product Info */}
-      <div className="space-y-2 text-center">
-        <h3 className="text-xl font-serif text-textMain tracking-wide leading-tight">
+      {/* Product Info - Minimal, Editorial */}
+      <div className="flex flex-col items-center gap-1 text-center">
+        <h3 className="text-lg md:text-xl font-serif text-textMain tracking-wide leading-tight mb-1">
           {name}
         </h3>
-        <p className="text-base text-textSubtle font-medium">
+        <p className="text-base text-textSubtle font-normal mb-1">
           €{price}
         </p>
+        {/* Optional: Show description if present */}
+        {typeof (images as any).description === 'string' ? null : null}
       </div>
     </div>
   )
