@@ -68,7 +68,53 @@ export default function Product() {
   const { addToCart } = useCart()
   const [addedToCart, setAddedToCart] = useState(false)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
-  const product = watches.find((w) => w.id === parseInt(id || '0'))
+  let product = watches.find((w) => w.id === parseInt(id || '0'));
+
+  // Paris & Pacific Collection customizations
+  if (product) {
+    // Paris Collection
+    if (product.id === 201) {
+      product = {
+        ...product,
+        name: 'Ruelles',
+        description: `The ruelle is the part of Paris tourists miss. Narrow, deliberate, unannounced—a passage that rewards the ones who actually look. These frames carry that same energy: nothing decorative, nothing accidental. Just clean black architecture sitting flush against the bone.`
+      };
+    } else if (product.id === 204) {
+      product = {
+        ...product,
+        name: 'Impasse',
+        description: `A dead-end isn't a failure of direction. In Paris, it's a destination. The impasse is where the city stops performing and starts existing: quiet, self-contained, indifferent to through-traffic. These frames don't ask for your attention. They simply have it.`
+      };
+    } else if (product.id === 207) {
+      product = {
+        ...product,
+        name: 'Boulevard',
+        description: `The one frame that holds two cities at once. The Haussmannian rigor of the 6th and the loose, sun-cut confidence of West Hollywood. Not a compromise between the two. What happens when both cities agree on what looks good. Black, structured, made for movement.`
+      };
+    }
+    // Pacific Collection
+    else if (product.id === 101) {
+      product = {
+        ...product,
+        name: 'Drift',
+      };
+    } else if (product.id === 102) {
+      product = {
+        ...product,
+        name: 'Glow',
+      };
+    } else if (product.id === 202) {
+      product = {
+        ...product,
+        name: 'Sway',
+      };
+    } else if (product.id === 203) {
+      product = {
+        ...product,
+        name: 'Roam',
+      };
+    }
+  }
 
   // Navigation functions
   const goToNextImage = () => {

@@ -13,10 +13,11 @@ export default function Navbar() {
 
   const navItems = [
     { name: 'Boutique', path: '/boutique' },
-    { name: 'Pacific Collection', path: '/pacific-collection' },
+    { name: 'Paris Collection', path: '/paris' },
+    { name: 'LA Collection', path: '/pacific-collection' },
     { name: 'Configurateur', path: '/configurateur' },
     { name: 'À propos', path: '/a-propos' },
-  ]
+  ];
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 100)

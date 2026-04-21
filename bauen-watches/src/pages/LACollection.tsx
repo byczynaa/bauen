@@ -1,48 +1,65 @@
 import WatchCard from '../components/WatchCard'
 import Button from '../components/Button'
 
+// New Pacific Collection frames using unused models
 const laProducts = [
   {
-    id: 201,
-    name: 'Sunset Boulevard',
-    price: 349,
-    image: '/images/blue00.jpeg',
-    description: 'Inspired by the golden hour over Los Angeles, Sunset Boulevard captures the vibrant warmth of California sunsets. With warm amber tones and sleek modern frames, this piece celebrates LA\'s iconic style.',
-    images: ['/images/blue00.jpeg', '/images/blue01.jpeg', '/images/blue02.jpeg'],
-  },
-  {
-    id: 202,
-    name: 'Pacific Dreams',
-    price: 339,
-    image: '/images/blue01.jpeg',
-    description: 'Feel the ocean breeze with Pacific Dreams. This collection draws inspiration from LA\'s stunning coastline with cool ocean blues and minimalist design. Perfect for those who embrace the California beach lifestyle.',
-    images: ['/images/blue01.jpeg', '/images/blue02.jpeg', '/images/blue03.jpeg'],
-  },
-  {
-    id: 203,
-    name: 'City Lights',
+    id: 401,
+    name: 'Drift',
     price: 359,
-    image: '/images/brown00.jpeg',
-    description: 'Experience the magic of LA\'s vibrant nightlife with City Lights. Bold frames and sophisticated styling make this collection perfect for those who own the night. Symbol of LA\'s creative energy.',
-    images: ['/images/brown00.jpeg', '/images/brown01.jpeg'],
+    image: '/bauen-content/frame01/IMG_2811.jpeg',
+    description: 'A frame inspired by movement and freedom, with a design that flows like the Pacific tides.',
+    images: [
+      '/bauen-content/frame01/IMG_2811.jpeg',
+      '/bauen-content/frame01/IMG_2812.jpeg',
+      '/bauen-content/frame01/IMG_2813.jpeg',
+    ],
   },
   {
-    id: 204,
-    name: 'Desert Rose',
+    id: 402,
+    name: 'Waves',
     price: 329,
-    image: '/bauen-content/frame07/IMG_4493.jpeg',
-    description: 'Blend the warm desert landscape with modern elegance. Desert Rose combines earthy tones with contemporary design, capturing the essence of LA\'s diverse natural beauty.',
-    images: ['/bauen-content/frame07/IMG_4493.jpeg', '/bauen-content/frame07/IMG_4495.jpeg', '/bauen-content/frame07/IMG_4498.jpeg', '/bauen-content/frame07/IMG_4499.jpeg'],
+    image: '/bauen-content/frame02/IMG_2815.jpeg',
+    description: 'Waves captures the rhythm and energy of the coast, with contours that echo the ocean’s pulse.',
+    images: [
+      '/bauen-content/frame02/IMG_2815.jpeg',
+      '/bauen-content/frame02/IMG_2816.jpeg',
+      '/bauen-content/frame02/IMG_2817.jpeg',
+    ],
   },
   {
-    id: 207,
-    name: 'Venice',
-    price: 349,
-    image: '/bauen-content/frame05/IMG_4503.jpeg',
-    description: 'Capture the bohemian spirit of Venice Beach with Venice sunglasses. These modern shades embody the eclectic, artistic vibe of LA\'s iconic beach community with vibrant colors and free-spirited design. Featuring a subtle red glow that becomes clear in the California sun.',
-    images: ['/bauen-content/frame05/IMG_4503.jpeg', '/bauen-content/frame05/sunnymodelpic1.JPEG', '/bauen-content/frame05/IMG_4504.jpeg', '/bauen-content/frame05/IMG_4506.jpeg', '/bauen-content/frame05/IMG_4510.jpeg', '/bauen-content/frame05/IMG_4511.jpeg', '/bauen-content/frame05/sunnymodelpic2.JPEG', '/bauen-content/frame05/sunnymodelpic3.JPEG'],
+    id: 403,
+    name: 'Sway',
+    price: 339,
+    image: '/bauen-content/frame04/IMG_2893.jpeg',
+    description: 'Sway is for those who move with the breeze—light, effortless, and always in motion.',
+    images: [
+      '/bauen-content/frame04/IMG_2893.jpeg',
+      '/bauen-content/frame04/IMG_2895.jpeg',
+      '/bauen-content/frame04/IMG_2896.jpeg',
+      '/bauen-content/frame04/IMG_2898.jpeg',
+      '/bauen-content/frame04/IMG_2899.jpeg',
+      '/bauen-content/frame04/IMG_2900.jpeg',
+      '/bauen-content/frame04/IMG_2903.jpeg',
+    ],
   },
-]
+  {
+    id: 404,
+    name: 'Glow',
+    price: 359,
+    image: '/bauen-content/frame06/IMG_4518.jpeg',
+    description: 'Glow shines with subtle highlights and a luminous finish, perfect for nights on the coast.',
+    images: [
+      '/bauen-content/frame06/IMG_4518.jpeg',
+      '/bauen-content/frame06/IMG_4519.jpeg',
+      '/bauen-content/frame06/IMG_4520.jpeg',
+      '/bauen-content/frame06/IMG_4521.jpeg',
+      '/bauen-content/frame06/IMG_4522.jpeg',
+      '/bauen-content/frame06/IMG_4525.jpeg',
+      '/bauen-content/frame06/IMG_4526.jpeg',
+    ],
+  },
+];
 
 export default function LACollection() {
   return (
@@ -88,12 +105,25 @@ export default function LACollection() {
               Seven frames, seven stories of California life.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-            {laProducts.map((product) => (
-              <div key={product.id} className="group">
-                <WatchCard {...product} />
+          <div className="grid grid-cols-2 gap-12">
+            <div className="flex flex-col gap-12">
+              {/* First column: Chance, Pacific Dreams */}
+              <div className="group">
+                <WatchCard {...laProducts.find(p => p.name === 'Chance')} />
               </div>
-            ))}
+              <div className="group">
+                <WatchCard {...laProducts.find(p => p.name === 'Pacific Dreams')} />
+              </div>
+            </div>
+            <div className="flex flex-col gap-12">
+              {/* Second column: Abyss, City Lights */}
+              <div className="group">
+                <WatchCard {...laProducts.find(p => p.name === 'Abyss')} />
+              </div>
+              <div className="group">
+                <WatchCard {...laProducts.find(p => p.name === 'City Lights')} />
+              </div>
+            </div>
           </div>
         </div>
       </section>
