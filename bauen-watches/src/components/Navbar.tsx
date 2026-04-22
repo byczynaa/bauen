@@ -15,7 +15,7 @@ export default function Navbar() {
     { name: 'Boutique', path: '/boutique' },
     { name: 'Paris Collection', path: '/paris' },
     { name: 'LA Collection', path: '/pacific-collection' },
-    { name: 'Configurateur', path: '/configurateur' },
+    // { name: 'Configurateur', path: '/configurateur' },
     { name: 'À propos', path: '/a-propos' },
   ];
 

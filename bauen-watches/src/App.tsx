@@ -7,7 +7,7 @@ import Product from './pages/Product'
 import Checkout from './pages/Checkout'
 import Cart from './pages/Cart'
 import Article from './pages/Article'
-import Configurateur from './pages/Configurateur'
+// import Configurateur from './pages/Configurateur'
 import Apropos from './pages/Apropos'
 import Paris from './pages/Paris'
 import LA from './pages/LA'
@@ -48,7 +48,7 @@ function AppRoutes() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/article/:slug" element={<Article />} />
-            <Route path="/configurateur" element={<Configurateur />} />
+            {/* <Route path="/configurateur" element={<Configurateur />} /> */}
             <Route path="/a-propos" element={<Apropos />} />
             <Route path="/paris" element={<Paris />} />
             <Route path="/la" element={<LA />} />

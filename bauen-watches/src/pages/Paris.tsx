@@ -83,8 +83,8 @@ export default function Paris() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="bg-surface py-24 px-6 text-center">
+      {/* CTA Section hidden until Configurator is ready */}
+      {/* <section className="bg-surface py-24 px-6 text-center">
         <div className="max-w-4xl mx-auto">
           <h3 className="text-4xl font-serif mb-6">Find Your Parisian Style</h3>
           <p className="text-lg text-textSubtle mb-10 max-w-2xl mx-auto leading-relaxed">
@@ -92,7 +92,7 @@ export default function Paris() {
           </p>
           <Button variant="primary" className="px-8 py-4 text-lg">Start Customizing</Button>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }

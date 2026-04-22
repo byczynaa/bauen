@@ -43,13 +43,13 @@ export default function LA() {
           className="w-full h-full object-cover"
         />
       </section>
-      {/* Bouton configurateur */}
-      <section className="text-center py-20">
+      {/* Configurator section hidden until ready */}
+      {/* <section className="text-center py-20">
         <p className="text-textSubtle mb-6">
           Create the eyewear that embodies your California style.
         </p>
         <Button variant="primary">Access the Configurator</Button>
-      </section>
+      </section> */}
     </div>
   )
 }

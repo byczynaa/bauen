@@ -67,7 +67,7 @@ export default function LACollection() {
   return (
     <div className="bg-base text-textMain min-h-screen">
       {/* Optional: Minimal Collection Navigation */}
-      <nav className="w-full flex justify-center pt-8 pb-4">
+      <nav cxlassName="w-full flex justify-center pt-8 pb-4">
         <div className="flex gap-8 text-sm font-serif text-textSubtle">
           <Link to="/paris" className="hover:text-accent transition">Paris</Link>
           <span className="text-accent">Pacific</span>
@@ -138,8 +138,8 @@ export default function LACollection() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20"></div>
       </section>
 
-      {/* CTA Section - Minimal, Fashion-forward */}
-      <section className="bg-surface py-20 px-6 text-center">
+      {/* CTA Section hidden until Configurator is ready */}
+      {/* <section className="bg-surface py-20 px-6 text-center">
         <div className="max-w-3xl mx-auto">
           <h3 className="text-2xl md:text-3xl font-serif mb-5">Made to be worn your way</h3>
           <p className="text-base text-textSubtle mb-8 max-w-xl mx-auto leading-relaxed">
@@ -147,7 +147,7 @@ export default function LACollection() {
           </p>
           <Button variant="primary" className="px-8 py-4 text-lg">Start Customizing</Button>
         </div>
-      </section>
+      </section> */}
     </div>
   )
 }
