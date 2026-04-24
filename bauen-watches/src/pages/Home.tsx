@@ -23,6 +23,28 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Pacific Collection Editorial Section */}
+      <section className="relative w-[100vw] left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] h-[54vh] min-h-[320px] max-h-[600px] flex items-center justify-center overflow-hidden mb-24">
+        <img
+          src="/bauen-content/artistic/Deck%20shot%201.jpg"
+          alt="Pacific Collection deck shot"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+          style={{ filter: 'brightness(0.93) contrast(1.04)' }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/5 to-transparent pointer-events-none" />
+        <div className="relative z-10 flex flex-col items-center justify-center w-full px-6">
+          <h2 className="text-4xl md:text-5xl font-serif mb-3 text-[#F5F5F5] drop-shadow-lg tracking-tight">Pacific Collection</h2>
+          <p className="text-lg md:text-2xl text-[#F5F5F5] font-light mb-8 drop-shadow" style={{textShadow:'0 2px 8px rgba(0,0,0,0.32)'}}>For endless days and sunlit hours.</p>
+          <a
+              href="/pacific-collection"
+            className="inline-block text-base font-serif text-[#F5F5F5] border-b border-[#F5F5F5]/40 hover:border-accent hover:text-accent transition px-2 pb-1 drop-shadow"
+            style={{textShadow:'0 2px 8px rgba(0,0,0,0.32)'}}
+          >
+            View Collection
+          </a>
+        </div>
+      </section>
+
       {/* Artistic Gallery */}
       <section className="max-w-6xl mx-auto py-20 px-6">
         <h2 className="text-4xl font-serif mb-4 text-center">Craftsmanship</h2>

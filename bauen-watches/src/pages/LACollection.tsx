@@ -13,6 +13,9 @@ const laProducts = [
       '/bauen-content/frame01/IMG_2811.jpeg',
       '/bauen-content/frame01/IMG_2812.jpeg',
       '/bauen-content/frame01/IMG_2813.jpeg',
+      '/bauen-content/artistic/Blue%20classic%20folded%20straight%20on.jpg',
+      '/bauen-content/artistic/Blue%20classic%20hing%20angle.jpg',
+      '/bauen-content/artistic/Blue%20classic%20logo%20closeup.jpg',
     ],
   },
   {
@@ -128,14 +131,46 @@ export default function LACollection() {
         </div>
       </section>
 
-      {/* Visual Break - Editorial Lifestyle Image */}
-      <section className="relative h-[44vh] overflow-hidden">
+
+      {/* Editorial Campaign Moment - Model Closeup */}
+      <div className="h-24 sm:h-32 md:h-40 lg:h-48" /> {/* Intentional vertical space above */}
+      <section className="relative w-[100vw] left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] h-[60vh] min-h-[380px] max-h-[700px] overflow-hidden flex items-center p-0 m-0">
         <img
-          src="/bauen-content/artistic/Cafemodel.JPEG"
-          alt="Pacific mood"
-          className="w-full h-full object-cover"
+          src="/bauen-content/artistic/Model%20closeup%201.jpg"
+          alt="Model closeup - Pacific Collection"
+          className="absolute inset-0 w-full h-full"
+          style={{
+            objectFit: 'cover',
+            objectPosition: '60% center',
+            transform: 'scale(0.92)',
+            transition: 'transform 1s cubic-bezier(0.4,0,0.2,1)'
+          }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20"></div>
+        {/* Subtle dark gradient for text contrast */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/5 to-transparent pointer-events-none"></div>
+        <div
+          className="absolute left-0 w-full flex"
+          style={{
+            top: '65%',
+            justifyContent: 'flex-start',
+            pointerEvents: 'none',
+          }}
+        >
+          <span
+            className="ml-8 md:ml-16 text-[2.2rem] md:text-5xl font-serif font-normal tracking-tight select-none text-left"
+            style={{
+              color: '#F5F5F5',
+              textShadow: '0px 2px 8px rgba(0,0,0,0.4)',
+              background: 'rgba(0,0,0,0.01)',
+              padding: '0.1em 0.5em',
+              borderRadius: '0.2em',
+              userSelect: 'none',
+              maxWidth: 'min(90vw, 600px)',
+            }}
+          >
+            Worn your way.
+          </span>
+        </div>
       </section>
 
       {/* CTA Section hidden until Configurator is ready */}

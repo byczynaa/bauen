@@ -14,6 +14,9 @@ const watches = [
         '/bauen-content/frame01/IMG_2811.jpeg',
         '/bauen-content/frame01/IMG_2812.jpeg',
         '/bauen-content/frame01/IMG_2813.jpeg',
+        '/bauen-content/artistic/Blue%20classic%20folded%20straight%20on.jpg',
+        '/bauen-content/artistic/Blue%20classic%20hing%20angle.jpg',
+        '/bauen-content/artistic/Blue%20classic%20logo%20closeup.jpg',
       ],
     },
     {
