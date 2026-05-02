@@ -90,29 +90,29 @@ function CheckoutForm() {
   return (
     <section className="bg-base text-textMain min-h-screen py-20 px-6">
       <div className="max-w-2xl mx-auto">
-        <h2 className="text-4xl font-serif mb-10 text-center">Paiement sécurisé</h2>
+        <h2 className="text-4xl font-serif mb-10 text-center">Secure Payment</h2>
 
-        {/* Résumé du panier */}
+        {/* Order Summary */}
         <div className="bg-surface border border-border rounded-lg p-6 mb-8">
-          <h3 className="text-xl font-serif mb-6">Résumé de la commande</h3>
+          <h3 className="text-xl font-serif mb-6">Order Summary</h3>
           {items.map((item) => (
             <div key={item.id} className="flex justify-between mb-4 text-textSubtle">
               <span>
                 {item.name} × {item.quantity}
               </span>
-              <span>{(item.price * item.quantity).toFixed(2)} €</span>
+              <span>${(item.price * item.quantity).toFixed(2)}</span>
             </div>
           ))}
           <div className="border-t border-border mt-6 pt-6 flex justify-between font-serif text-lg">
-            <span>Total :</span>
-            <span>{total.toFixed(2)} €</span>
+            <span>Total:</span>
+            <span>${total.toFixed(2)}</span>
           </div>
         </div>
 
-        {/* Formulaire Stripe */}
+        {/* Stripe Form */}
         <form onSubmit={handleSubmit} className="bg-surface border border-border rounded-lg p-8">
           <div className="mb-6">
-            <label className="block text-sm font-medium mb-2">Carte bancaire</label>
+            <label className="block text-sm font-medium mb-2">Credit Card</label>
             <CardElement
               options={{
                 style: {
@@ -135,7 +135,7 @@ function CheckoutForm() {
           {error && <div className="text-red-500 mb-4 text-sm">{error}</div>}
 
           {success && (
-            <div className="text-green-500 mb-4 text-sm">Paiement réussi ! Redirection...</div>
+            <div className="text-green-500 mb-4 text-sm">Payment successful! Redirecting...</div>
           )}
 
           <div className="flex gap-4">

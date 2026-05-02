@@ -26,16 +26,17 @@ export default function Cart() {
         <ul className="space-y-6 mb-8">
           {items.map((item) => (
             <li key={item.id} className="flex justify-between items-center">
-              <span>
-                {item.name} × {item.quantity}
-              </span>
               <div className="flex items-center gap-4">
-                <span>{(item.price * item.quantity).toFixed(2)} €</span>
+                <img src={item.image} alt={item.name} className="w-14 h-14 object-cover rounded-lg border border-border bg-white" />
+                <span className="font-serif text-base">{item.name} × {item.quantity}</span>
+              </div>
+              <div className="flex items-center gap-4">
+                <span>${(item.price * item.quantity).toFixed(2)}</span>
                 <button
                   className="text-red-500 hover:underline text-sm"
                   onClick={() => removeFromCart(item.id)}
                 >
-                  Supprimer
+                  Remove
                 </button>
               </div>
             </li>
@@ -44,15 +45,15 @@ export default function Cart() {
 
         <div className="flex justify-between items-center mb-8">
           <span className="text-xl font-medium">Total:</span>
-          <span className="text-2xl font-serif">{total.toFixed(2)} €</span>
+          <span className="text-2xl font-serif">${total.toFixed(2)}</span>
         </div>
 
         <div className="flex gap-4 justify-center">
           <Button variant="primary" onClick={() => navigate('/checkout')}>
-            Passer au paiement
+            Proceed to Checkout
           </Button>
           <Button variant="outline" onClick={clearCart}>
-            Vider le panier
+            Empty Cart
           </Button>
         </div>
       </div>

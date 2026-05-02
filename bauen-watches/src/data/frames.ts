@@ -19,6 +19,7 @@ export const frames: Frame[] = [
       '/bauen-content/frame01/IMG_2813.jpeg',
     ],
     category: 'Craftsmanship',
+    price: 79.99,
   },
   {
     id: 2,
@@ -31,6 +32,7 @@ export const frames: Frame[] = [
       '/bauen-content/frame02/IMG_2817.jpeg',
     ],
     category: 'Craftsmanship',
+    price: 79.99,
   },
   {
     id: 3,

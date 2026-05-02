@@ -51,7 +51,7 @@ export default function WatchCard({ id, name, price, image, images = [] }: Watch
           {name}
         </h3>
         <p className="text-base text-textSubtle font-normal mb-1">
-          €{price}
+          ${price.toFixed(2)}
         </p>
         {/* Optional: Show description if present */}
         {typeof (images as any).description === 'string' ? null : null}

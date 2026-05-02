@@ -6,7 +6,7 @@ const laProducts = [
   {
     id: 101,
     name: 'Drift',
-    price: 359,
+    price: 79.99,
     image: '/bauen-content/frame01/IMG_2811.jpeg',
     description: 'Movement, uninterrupted.',
     images: [
@@ -21,7 +21,7 @@ const laProducts = [
   {
     id: 102,
     name: 'Glow',
-    price: 359,
+    price: 79.99,
     image: '/bauen-content/frame06/IMG_4518.jpeg',
     description: 'Soft light, subtle shine.',
     images: [
@@ -37,7 +37,7 @@ const laProducts = [
   {
     id: 202,
     name: 'Sway',
-    price: 339,
+    price: 79.99,
     image: '/bauen-content/frame04/IMG_2893.jpeg',
     description: 'Effortless, always in motion.',
     images: [
@@ -53,7 +53,7 @@ const laProducts = [
   {
     id: 203,
     name: 'Roam',
-    price: 329,
+    price: 79.99,
     image: '/bauen-content/frame02/IMG_2815.jpeg',
     description: 'Contours in rhythm.',
     images: [
@@ -70,7 +70,7 @@ export default function LACollection() {
   return (
     <div className="bg-base text-textMain min-h-screen">
       {/* Optional: Minimal Collection Navigation */}
-      <nav cxlassName="w-full flex justify-center pt-8 pb-4">
+      <nav className="w-full flex justify-center pt-8 pb-4">
         <div className="flex gap-8 text-sm font-serif text-textSubtle">
           <Link to="/paris" className="hover:text-accent transition">Paris</Link>
           <span className="text-accent">Pacific</span>

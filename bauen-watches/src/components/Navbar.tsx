@@ -62,7 +62,7 @@ export default function Navbar() {
         >
           <ShoppingCart size={24} strokeWidth={1.5} />
           {items.length > 0 && (
-            <span className="absolute -top-2 -right-2 bg-accent text-base text-xs rounded-full w-5 h-5 flex items-center justify-center font-medium">
+            <span className="absolute -top-3 -right-2 bg-accent text-base text-xs rounded-full w-5 h-5 flex items-center justify-center font-medium shadow-md" style={{paddingTop: '2px'}}>
               {items.reduce((sum, item) => sum + item.quantity, 0)}
             </span>
           )}
