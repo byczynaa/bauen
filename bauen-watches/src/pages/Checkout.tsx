@@ -4,8 +4,11 @@ import { loadStripe } from '@stripe/stripe-js'
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import { useCart } from '../context/CartContext'
 import Button from '../components/Button'
+import { decrementInventoryFromOrder } from '../utils/inventory'
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY)
+const apiBaseUrl = import.meta.env.VITE_API_URL ?? 'http://localhost:4242'
+const isTestMode = import.meta.env.VITE_STRIPE_PUBLIC_KEY?.startsWith('pk_test_')
 
 function CheckoutForm() {
   const stripe = useStripe()
@@ -20,7 +23,7 @@ function CheckoutForm() {
     e.preventDefault()
 
     if (!stripe || !elements) {
-      setError('Stripe est en cours de chargement...')
+      setError('Stripe is still loading, please try again.')
       return
     }
 
@@ -28,30 +31,38 @@ function CheckoutForm() {
     setError(null)
 
     const cardElement = elements.getElement(CardElement)
+    if (!cardElement) {
+      setError('Card field not found.')
+      setLoading(false)
+      return
+    }
 
     try {
       // Appel à ton backend pour créer le PaymentIntent
-      const response = await fetch('http://localhost:4242/api/create-payment-intent', {
+      const response = await fetch(`${apiBaseUrl}/api/create-payment-intent`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          amount: Math.round(total * 100), // Stripe utilise les centimes
-          items,
+          items: items.map((item) => ({
+            id: item.id,
+            quantity: item.quantity,
+          })),
         }),
       })
 
       if (!response.ok) {
-        throw new Error('Erreur lors de la création du paiement')
+        const body = await response.json().catch(() => null)
+        throw new Error(body?.error || 'Failed to create payment')
       }
 
       const { clientSecret } = await response.json()
 
-      // Confirme le paiement côté client
+      // Confirm payment on the client side
       const result = await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
-          card: cardElement!,
+          card: cardElement,
           billing_details: {
             name: 'Customer',
           },
@@ -59,16 +70,20 @@ function CheckoutForm() {
       })
 
       if (result.error) {
-        setError(result.error.message || 'Erreur de paiement')
+        setError(result.error.message || 'Payment error')
       } else if (result.paymentIntent?.status === 'succeeded') {
         setSuccess(true)
+        decrementInventoryFromOrder(
+          items.map((item) => ({
+            id: item.id,
+            quantity: item.quantity,
+          })),
+        )
         clearCart()
-        setTimeout(() => {
-          navigate('/boutique')
-        }, 2000)
+        navigate('/order-confirmed')
       }
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Une erreur est survenue')
+      setError(err instanceof Error ? err.message : 'An error occurred')
     } finally {
       setLoading(false)
     }
@@ -78,9 +93,9 @@ function CheckoutForm() {
     return (
       <section className="bg-base text-textMain min-h-screen py-20 px-6 flex items-center justify-center">
         <div className="text-center">
-          <h2 className="text-3xl font-serif mb-4">Votre panier est vide</h2>
+          <h2 className="text-3xl font-serif mb-4">Your cart is empty</h2>
           <Button variant="outline" onClick={() => navigate('/boutique')}>
-            Retour à la boutique
+            Back to Boutique
           </Button>
         </div>
       </section>
@@ -140,20 +155,22 @@ function CheckoutForm() {
 
           <div className="flex gap-4">
             <Button variant="primary" disabled={!stripe || loading}>
-              {loading ? 'Traitement...' : `Payer ${total.toFixed(2)} €`}
+              {loading ? 'Processing...' : `Pay ${total.toFixed(2)} €`}
             </Button>
             <Button
               variant="outline"
               onClick={() => navigate('/boutique')}
               disabled={loading}
             >
-              Annuler
+              Cancel
             </Button>
           </div>
         </form>
 
         <p className="text-textSubtle text-sm mt-8 text-center">
-          Ceci est un formulaire de test. Utilise la carte 4242 4242 4242 4242 pour tester.
+          {isTestMode
+            ? 'Test mode active: use card 4242 4242 4242 4242 to test.'
+            : 'Live mode active: use a real credit card.'}
         </p>
       </div>
     </section>

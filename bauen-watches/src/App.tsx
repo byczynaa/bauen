@@ -7,6 +7,10 @@ import Product from './pages/Product'
 import Checkout from './pages/Checkout'
 import Cart from './pages/Cart'
 import Article from './pages/Article'
+import OrderConfirmed from './pages/OrderConfirmed'
+import InventoryManagement from './pages/InventoryManagement'
+import InventoryLogin from './pages/InventoryLogin'
+import InventoryGuard from './components/InventoryGuard'
 // import Configurateur from './pages/Configurateur'
 import Apropos from './pages/Apropos'
 import Paris from './pages/Paris'
@@ -47,6 +51,16 @@ function AppRoutes() {
             <Route path="/product/:id" element={<Product />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/order-confirmed" element={<OrderConfirmed />} />
+            <Route path="/inventory-login" element={<InventoryLogin />} />
+            <Route
+              path="/inventory"
+              element={(
+                <InventoryGuard>
+                  <InventoryManagement />
+                </InventoryGuard>
+              )}
+            />
             <Route path="/article/:slug" element={<Article />} />
             {/* <Route path="/configurateur" element={<Configurateur />} /> */}
             <Route path="/a-propos" element={<Apropos />} />

@@ -299,7 +299,7 @@ export default function Product() {
             <Button
               variant="primary"
               onClick={() => {
-                addToCart({ id: product.id, name: product.name, price: product.price })
+                addToCart({ id: product.id, name: product.name, price: product.price, image: product.image })
                 setAddedToCart(true)
                 setTimeout(() => setAddedToCart(false), 2000)
               }}

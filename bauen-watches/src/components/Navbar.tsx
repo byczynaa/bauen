@@ -16,7 +16,7 @@ export default function Navbar() {
     { name: 'Paris Collection', path: '/paris' },
     { name: 'LA Collection', path: '/pacific-collection' },
     // { name: 'Configurateur', path: '/configurateur' },
-    { name: 'À propos', path: '/a-propos' },
+    { name: 'About', path: '/a-propos' },
   ];
 
   useEffect(() => {
@@ -58,7 +58,7 @@ export default function Navbar() {
         <button
           className="relative hover:text-accent transition"
           onClick={() => navigate('/cart')}
-          aria-label="Panier"
+          aria-label="Cart"
         >
           <ShoppingCart size={24} strokeWidth={1.5} />
           {items.length > 0 && (
