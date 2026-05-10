@@ -1,41 +1,14 @@
 
 import WatchCard from '../components/WatchCard';
 import Button from '../components/Button';
-
-const parisProducts = [
-  {
-    id: 201, // Sunset Boulevard
-    name: 'Ruelles',
-    price: 79.99,
-    image: '/bauen-content/frame03/IMG_2880.jpeg',
-    description: `The ruelle is the part of Paris tourists miss. Narrow, deliberate, unannounced—a passage that rewards the ones who actually look. These frames carry that same energy: nothing decorative, nothing accidental. Just clean black architecture sitting flush against the bone.`,
-    images: [
-      '/bauen-content/frame03/IMG_2880.jpeg',
-      '/bauen-content/frame03/IMG_2881.jpeg',
-      '/bauen-content/frame03/IMG_2884.jpeg',
-      '/bauen-content/frame03/IMG_2885.jpeg',
-      '/bauen-content/frame03/IMG_2888.jpeg',
-    ],
-  },
-  {
-    id: 204, // Desert Rose
-    name: 'Impasse',
-    price: 79.99,
-    image: '/bauen-content/frame07/IMG_4493.jpeg',
-    description: `A dead-end isn't a failure of direction. In Paris, it's a destination. The impasse is where the city stops performing and starts existing: quiet, self-contained, indifferent to through-traffic. These frames don't ask for your attention. They simply have it.`,
-    images: ['/bauen-content/frame07/IMG_4493.jpeg', '/bauen-content/frame07/IMG_4495.jpeg', '/bauen-content/frame07/IMG_4498.jpeg', '/bauen-content/frame07/IMG_4499.jpeg'],
-  },
-  {
-    id: 207, // Venice
-    name: 'Boulevard',
-    price: 79.99,
-    image: '/bauen-content/frame05/IMG_4503.jpeg',
-    description: `The one frame that holds two cities at once. The Haussmannian rigor of the 6th and the loose, sun-cut confidence of West Hollywood. Not a compromise between the two. What happens when both cities agree on what looks good. Black, structured, made for movement.`,
-    images: ['/bauen-content/frame05/IMG_4503.jpeg', '/bauen-content/frame05/sunnymodelpic1.JPEG', '/bauen-content/frame05/IMG_4504.jpeg', '/bauen-content/frame05/IMG_4506.jpeg', '/bauen-content/frame05/IMG_4510.jpeg', '/bauen-content/frame05/IMG_4511.jpeg', '/bauen-content/frame05/sunnymodelpic2.JPEG', '/bauen-content/frame05/sunnymodelpic3.JPEG'],
-  },
-];
+import { getProductsByIds, parisProductIds } from '../data/products';
+import { toInventoryMap, usePublicInventory } from '../utils/publicInventory';
 
 export default function Paris() {
+  const parisProducts = getProductsByIds(parisProductIds)
+  const { items } = usePublicInventory()
+  const inventoryMap = toInventoryMap(items)
+
   return (
     <div className="text-textMain">
       {/* Hero Section with Lifestyle Image */}
@@ -76,7 +49,7 @@ export default function Paris() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
             {parisProducts.map((product) => (
               <div key={product.id} className="group">
-                <WatchCard {...product} />
+                <WatchCard {...product} stock={inventoryMap[product.id]?.stock} />
               </div>
             ))}
           </div>

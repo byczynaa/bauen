@@ -1,13 +1,14 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Button from '../components/Button'
-import {
-  getInventoryItems,
-  resetInventory,
-  setProductStock,
-  type InventoryItem,
-} from '../utils/inventory'
-import { revokeInventoryAccess } from '../utils/inventoryAccess'
+import { apiBaseUrl } from '../utils/api'
+
+interface InventoryItem {
+  id: number
+  name: string
+  stock: number
+  previewImage?: string
+}
 
 function StockBadge({ stock }: { stock: number }) {
   if (stock <= 2) {
@@ -21,8 +22,40 @@ function StockBadge({ stock }: { stock: number }) {
 
 export default function InventoryManagement() {
   const navigate = useNavigate()
-  const [items, setItems] = useState<InventoryItem[]>(() => getInventoryItems())
+  const [items, setItems] = useState<InventoryItem[]>([])
   const [query, setQuery] = useState('')
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  const loadInventory = async () => {
+    try {
+      const response = await fetch(`${apiBaseUrl}/api/inventory`, {
+        credentials: 'include',
+      })
+
+      if (response.status === 401) {
+        navigate('/inventory-login')
+        return
+      }
+
+      if (!response.ok) {
+        const body = await response.json().catch(() => null)
+        throw new Error(body?.error || 'Unable to load inventory')
+      }
+
+      const body = await response.json()
+      setItems(Array.isArray(body.items) ? body.items : [])
+      setError(null)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Unable to load inventory')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    loadInventory()
+  }, [])
 
   const filteredItems = useMemo(() => {
     const q = query.trim().toLowerCase()
@@ -35,19 +68,65 @@ export default function InventoryManagement() {
 
   const totalStock = items.reduce((sum, item) => sum + item.stock, 0)
 
-  const updateStock = (id: number, nextStock: number) => {
-    setProductStock(id, nextStock)
-    setItems(getInventoryItems())
+  const updateStock = async (id: number, nextStock: number) => {
+    try {
+      const response = await fetch(`${apiBaseUrl}/api/inventory/stock`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify({ id, stock: nextStock }),
+      })
+
+      if (!response.ok) {
+        const body = await response.json().catch(() => null)
+        throw new Error(body?.error || 'Unable to update stock')
+      }
+
+      setItems((prev) => prev.map((item) => (
+        item.id === id ? { ...item, stock: Math.max(0, Math.floor(nextStock)) } : item
+      )))
+      setError(null)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Unable to update stock')
+    }
   }
 
-  const handleReset = () => {
-    resetInventory()
-    setItems(getInventoryItems())
+  const handleReset = async () => {
+    try {
+      const response = await fetch(`${apiBaseUrl}/api/inventory/reset`, {
+        method: 'POST',
+        credentials: 'include',
+      })
+
+      if (!response.ok) {
+        const body = await response.json().catch(() => null)
+        throw new Error(body?.error || 'Unable to reset inventory')
+      }
+
+      const body = await response.json()
+      setItems(Array.isArray(body.items) ? body.items : [])
+      setError(null)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Unable to reset inventory')
+    }
   }
 
-  const handleLock = () => {
-    revokeInventoryAccess()
+  const handleLock = async () => {
+    await fetch(`${apiBaseUrl}/api/admin/logout`, {
+      method: 'POST',
+      credentials: 'include',
+    }).catch(() => null)
     navigate('/')
+  }
+
+  if (loading) {
+    return (
+      <section className="bg-base text-textMain min-h-screen py-24 px-6 flex items-center justify-center">
+        <p className="text-textSubtle">Loading inventory...</p>
+      </section>
+    )
   }
 
   return (
@@ -76,24 +155,35 @@ export default function InventoryManagement() {
             placeholder="Type product name or ID"
             className="w-full md:w-96 border border-border bg-white rounded px-3 py-2 text-sm"
           />
+          {error && <p className="text-red-600 text-sm mt-3">{error}</p>}
         </div>
 
         <div className="bg-surface border border-border rounded-lg overflow-hidden">
           <div className="grid grid-cols-12 gap-4 px-5 py-3 border-b border-border text-xs uppercase tracking-wide text-textSubtle">
-            <div className="col-span-2">ID</div>
-            <div className="col-span-4">Product</div>
+            <div className="col-span-1">Image</div>
+            <div className="col-span-1">ID</div>
+            <div className="col-span-3">Product</div>
             <div className="col-span-2">Status</div>
-            <div className="col-span-4">Stock</div>
+            <div className="col-span-5">Stock</div>
           </div>
 
           {filteredItems.map((item) => (
             <div key={item.id} className="grid grid-cols-12 gap-4 px-5 py-4 border-b border-border/70 last:border-b-0 items-center">
-              <div className="col-span-2 text-sm">{item.id}</div>
-              <div className="col-span-4 font-medium">{item.name}</div>
+              <div className="col-span-1">
+                {item.previewImage && (
+                  <img 
+                    src={item.previewImage} 
+                    alt={item.name}
+                    className="w-12 h-12 object-cover rounded border border-border"
+                  />
+                )}
+              </div>
+              <div className="col-span-1 text-sm">{item.id}</div>
+              <div className="col-span-3 font-medium">{item.name}</div>
               <div className="col-span-2">
                 <StockBadge stock={item.stock} />
               </div>
-              <div className="col-span-4 flex items-center gap-2">
+              <div className="col-span-5 flex items-center gap-2">
                 <button
                   className="border border-border rounded px-3 py-1 text-sm"
                   onClick={() => updateStock(item.id, item.stock - 1)}

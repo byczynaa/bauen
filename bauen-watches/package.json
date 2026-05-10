@@ -3,6 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "engines": {
+    "node": ">=20.19.0 || >=22.12.0"
+  },
   "scripts": {
     "dev": "vite",
     "dev:api": "node server.js",
@@ -10,20 +13,30 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "start:api": "node server.js"
+    "start:api": "node server.js",
+    "setup:secrets": "bash setup-production-secrets.sh",
+    "generate:secrets": "node scripts/generate-secrets.js all",
+    "validate:secrets": "node scripts/generate-secrets.js validate",
+    "test:webhook": "node deployment/test-stripe-webhook.js",
+    "verify:deployment": "node deployment/verify-deployment.js",
+    "deploy": "bash deployment/deploy.sh production"
   },
   "dependencies": {
     "@stripe/react-stripe-js": "^5.6.0",
     "@stripe/stripe-js": "^8.7.0",
+    "@supabase/supabase-js": "^2.105.4",
+    "bcryptjs": "^3.0.3",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "express-session": "^1.19.0",
     "framer-motion": "^12.26.2",
     "lucide-react": "^0.562.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.12.0",
-    "stripe": "^20.3.1"
+    "stripe": "^20.3.1",
+    "ws": "^8.20.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

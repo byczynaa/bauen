@@ -17,9 +17,22 @@ export default defineConfig({
   server: {
     port: 5173,
     open: true, // ouvre automatiquement le navigateur
+    proxy: {
+      // Proxy requests to /bauen-content to the backend server
+      '/bauen-content': {
+        target: 'http://localhost:4242',
+        changeOrigin: true,
+      },
+      // Proxy API requests to the backend server
+      '/api': {
+        target: 'http://localhost:4242',
+        changeOrigin: true,
+      },
+    },
   },
   build: {
     outDir: 'dist',
     sourcemap: true,
+    copyPublicDir: true, // Ensures public folder is copied to dist
   },
 })

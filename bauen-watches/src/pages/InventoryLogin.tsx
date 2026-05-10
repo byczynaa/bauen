@@ -1,30 +1,42 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Button from '../components/Button'
-import { grantInventoryAccess } from '../utils/inventoryAccess'
+import { apiBaseUrl } from '../utils/api'
 
 export default function InventoryLogin() {
   const navigate = useNavigate()
   const [passcode, setPasscode] = useState('')
   const [error, setError] = useState<string | null>(null)
 
-  const expectedPasscode = import.meta.env.VITE_INVENTORY_PASSCODE
+  const [loading, setLoading] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
-    if (!expectedPasscode) {
-      setError('Inventory passcode is not configured. Add VITE_INVENTORY_PASSCODE in .env.')
-      return
-    }
+    setLoading(true)
+    setError(null)
 
-    if (passcode.trim() !== expectedPasscode) {
-      setError('Invalid passcode.')
-      return
-    }
+    try {
+      const response = await fetch(`${apiBaseUrl}/api/admin/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify({ passcode }),
+      })
 
-    grantInventoryAccess()
-    navigate('/inventory')
+      if (!response.ok) {
+        const body = await response.json().catch(() => null)
+        throw new Error(body?.error || 'Unable to sign in')
+      }
+
+      navigate('/inventory')
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Unable to sign in')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -57,11 +69,13 @@ export default function InventoryLogin() {
           {error && <div className="text-red-500 text-sm">{error}</div>}
 
           <div className="flex gap-3">
-            <Button variant="primary">Unlock</Button>
-            <Button variant="outline" onClick={() => navigate('/')}>
+            <Button variant="primary" type="submit">Unlock</Button>
+            <Button variant="outline" type="button" onClick={() => navigate('/')}>
               Cancel
             </Button>
           </div>
+
+          {loading && <div className="text-textSubtle text-sm">Signing in...</div>}
         </form>
       </div>
     </section>

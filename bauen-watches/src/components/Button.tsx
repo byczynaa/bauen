@@ -4,6 +4,7 @@ interface ButtonProps {
   onClick?: () => void
   className?: string
   disabled?: boolean
+  type?: 'button' | 'submit' | 'reset'
 }
 
 export default function Button({
@@ -12,6 +13,7 @@ export default function Button({
   onClick,
   className = '',
   disabled = false,
+  type = 'button',
 }: ButtonProps) {
   const base =
     'px-6 py-3 font-medium tracking-wide transition duration-300 ease-out text-sm uppercase'
@@ -25,7 +27,7 @@ export default function Button({
   }
 
   return (
-    <button onClick={onClick} className={`${base} ${variants[variant]} ${className}`} disabled={disabled}>
+    <button type={type} onClick={onClick} className={`${base} ${variants[variant]} ${className}`} disabled={disabled}>
       {children}
     </button>
   )
