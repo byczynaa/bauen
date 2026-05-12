@@ -24,17 +24,20 @@ const adminPassword = process.env.INVENTORY_ADMIN_PASSWORD;
 const defaultStock = 25;
 const requestLimitStore = new Map();
 
-if (!stripeSecretKey) {
-  throw new Error('Missing STRIPE_SECRET_KEY in environment variables.');
+if (!stripeSecretKey && !isProduction) {
+  console.warn('STRIPE_SECRET_KEY is not set. Stripe payment routes are disabled in development.');
 }
 
-const stripe = new Stripe(stripeSecretKey, { apiVersion: '2023-10-16' });
+const stripe = stripeSecretKey ? new Stripe(stripeSecretKey, { apiVersion: '2023-10-16' }) : null;
 
 if (sessionSecret === 'dev_only_replace_me') {
   console.warn('SESSION_SECRET is not set. Configure SESSION_SECRET in .env before production.');
 }
 
 if (isProduction) {
+  if (!stripeSecretKey) {
+    throw new Error('STRIPE_SECRET_KEY must be configured in production.');
+  }
   if (sessionSecret === 'dev_only_replace_me') {
     throw new Error('SESSION_SECRET must be configured in production.');
   }
@@ -214,6 +217,10 @@ app.use(session({
 }));
 
 app.post('/api/stripe/webhook', express.raw({ type: 'application/json' }), async (req, res) => {
+  if (!stripe) {
+    return res.status(503).send('Stripe is not configured.');
+  }
+
   if (!webhookSecret) {
     return res.status(500).send('Missing STRIPE_WEBHOOK_SECRET');
   }
@@ -356,6 +363,10 @@ app.post('/api/inventory/release-reservation', async (req, res) => {
 });
 
 app.post('/api/inventory/decrement-order', async (req, res) => {
+  if (!stripe) {
+    return res.status(503).json({ error: 'Stripe is not configured on server.' });
+  }
+
   const paymentIntentId = String(req.body?.paymentIntentId ?? '').trim();
   const fallbackReservationToken = String(req.body?.reservationToken ?? '').trim();
 
@@ -386,6 +397,10 @@ app.post('/api/inventory/decrement-order', async (req, res) => {
 });
 
 app.post('/api/create-payment-intent', createPaymentIntentRateLimiter, async (req, res) => {
+  if (!stripe) {
+    return res.status(503).json({ error: 'Stripe is not configured on server.' });
+  }
+
   const items = Array.isArray(req.body?.items) ? req.body.items : [];
 
   if (items.length === 0) {

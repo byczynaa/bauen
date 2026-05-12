@@ -7,8 +7,9 @@ import Button from '../components/Button'
 import { apiBaseUrl } from '../utils/api'
 import { toInventoryMap, usePublicInventory } from '../utils/publicInventory'
 
-const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY)
-const isTestMode = import.meta.env.VITE_STRIPE_PUBLIC_KEY?.startsWith('pk_test_')
+const stripePublicKey = import.meta.env.VITE_STRIPE_PUBLIC_KEY
+const stripePromise = stripePublicKey ? loadStripe(stripePublicKey) : null
+const isTestMode = stripePublicKey?.startsWith('pk_test_')
 
 function CheckoutForm() {
   const stripe = useStripe()
@@ -225,6 +226,22 @@ function CheckoutForm() {
 }
 
 export default function Checkout() {
+  if (!stripePromise) {
+    return (
+      <section className="bg-base text-textMain min-h-screen py-20 px-6 flex items-center justify-center">
+        <div className="max-w-xl text-center">
+          <h2 className="text-3xl font-serif mb-4">Checkout unavailable</h2>
+          <p className="text-textSubtle mb-6">
+            Payments are disabled because VITE_STRIPE_PUBLIC_KEY is not configured.
+          </p>
+          <Button variant="outline" onClick={() => window.history.back()}>
+            Go back
+          </Button>
+        </div>
+      </section>
+    )
+  }
+
   return (
     <Elements stripe={stripePromise}>
       <CheckoutForm />
