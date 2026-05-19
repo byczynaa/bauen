@@ -1,72 +1,15 @@
 import WatchCard from '../components/WatchCard'
 import Button from '../components/Button'
-
-// Refined Pacific Collection frames (short, minimal descriptions)
-const laProducts = [
-  {
-    id: 101,
-    name: 'Drift',
-    price: 79.99,
-    image: '/bauen-content/frame01/IMG_2811.jpeg',
-    description: 'Movement, uninterrupted.',
-    images: [
-      '/bauen-content/frame01/IMG_2811.jpeg',
-      '/bauen-content/frame01/IMG_2812.jpeg',
-      '/bauen-content/frame01/IMG_2813.jpeg',
-      '/bauen-content/artistic/Blue%20classic%20folded%20straight%20on.jpg',
-      '/bauen-content/artistic/Blue%20classic%20hing%20angle.jpg',
-      '/bauen-content/artistic/Blue%20classic%20logo%20closeup.jpg',
-    ],
-  },
-  {
-    id: 102,
-    name: 'Glow',
-    price: 79.99,
-    image: '/bauen-content/frame06/IMG_4518.jpeg',
-    description: 'Soft light, subtle shine.',
-    images: [
-      '/bauen-content/frame06/IMG_4518.jpeg',
-      '/bauen-content/frame06/IMG_4519.jpeg',
-      '/bauen-content/frame06/IMG_4520.jpeg',
-      '/bauen-content/frame06/IMG_4521.jpeg',
-      '/bauen-content/frame06/IMG_4522.jpeg',
-      '/bauen-content/frame06/IMG_4525.jpeg',
-      '/bauen-content/frame06/IMG_4526.jpeg',
-    ],
-  },
-  {
-    id: 202,
-    name: 'Sway',
-    price: 79.99,
-    image: '/bauen-content/frame04/IMG_2893.jpeg',
-    description: 'Effortless, always in motion.',
-    images: [
-      '/bauen-content/frame04/IMG_2893.jpeg',
-      '/bauen-content/frame04/IMG_2895.jpeg',
-      '/bauen-content/frame04/IMG_2896.jpeg',
-      '/bauen-content/frame04/IMG_2898.jpeg',
-      '/bauen-content/frame04/IMG_2899.jpeg',
-      '/bauen-content/frame04/IMG_2900.jpeg',
-      '/bauen-content/frame04/IMG_2903.jpeg',
-    ],
-  },
-  {
-    id: 203,
-    name: 'Roam',
-    price: 79.99,
-    image: '/bauen-content/frame02/IMG_2815.jpeg',
-    description: 'Contours in rhythm.',
-    images: [
-      '/bauen-content/frame02/IMG_2815.jpeg',
-      '/bauen-content/frame02/IMG_2816.jpeg',
-      '/bauen-content/frame02/IMG_2817.jpeg',
-    ],
-  },
-];
+import { getProductsByIds, pacificProductIds } from '../data/products'
+import { toInventoryMap, usePublicInventory } from '../utils/publicInventory'
 
 import { Link } from 'react-router-dom'
 
 export default function LACollection() {
+  const laProducts = getProductsByIds(pacificProductIds)
+  const { items } = usePublicInventory()
+  const inventoryMap = toInventoryMap(items)
+
   return (
     <div className="bg-base text-textMain min-h-screen">
       {/* Optional: Minimal Collection Navigation */}
@@ -123,7 +66,7 @@ export default function LACollection() {
             {laProducts.map(product => (
               <div className="group" key={product.id}>
                 <Link to={`/product/${product.id}`} className="block no-underline text-inherit">
-                  <WatchCard {...product} />
+                  <WatchCard {...product} stock={inventoryMap[product.id]?.stock} />
                 </Link>
               </div>
             ))}

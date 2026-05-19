@@ -79,7 +79,7 @@ export default function Article() {
             variant="outline"
             onClick={() => navigate('/')}
           >
-            Retour aux histoires
+            Back to stories
           </Button>
         </div>
       </section>

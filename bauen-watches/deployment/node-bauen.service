@@ -1,0 +1,40 @@
+[Unit]
+Description=Bauen E-Commerce Platform API Server
+After=network.target
+StartLimitIntervalSec=300
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=www-data
+WorkingDirectory=/var/www/bauen-watches
+EnvironmentFile=/var/www/bauen-watches/.env
+
+# Node.js executable
+ExecStart=/usr/bin/node server.js
+
+# Restart policy
+Restart=on-failure
+RestartSec=10s
+
+# Resource limits
+MemoryLimit=512M
+CPUQuota=50%
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=bauen-api
+
+# Security
+NoNewPrivileges=true
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/var/www/bauen-watches
+
+# Health check
+ExecHealthCheck=/usr/bin/curl -f http://localhost:4242/api/health || exit 1
+
+[Install]
+WantedBy=multi-user.target
