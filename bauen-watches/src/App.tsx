@@ -10,6 +10,7 @@ import Article from './pages/Article'
 import OrderConfirmed from './pages/OrderConfirmed'
 import InventoryManagement from './pages/InventoryManagement'
 import InventoryLogin from './pages/InventoryLogin'
+import AdminOrders from './pages/AdminOrders'
 import InventoryGuard from './components/InventoryGuard'
 // import Configurateur from './pages/Configurateur'
 import Apropos from './pages/Apropos'
@@ -75,6 +76,7 @@ function AppRoutes() {
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/returns" element={<Returns />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/admin/orders" element={<AdminOrders />} />
           </Routes>
         </motion.main>
       </AnimatePresence>

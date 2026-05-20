@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import session from 'express-session';
 import bcrypt from 'bcryptjs';
 import { createInventoryStore } from './inventoryStore.js';
+import ordersApi from './server/ordersApi.js';
 
 dotenv.config();
 
@@ -267,6 +268,9 @@ app.post('/api/stripe/webhook', express.raw({ type: 'application/json' }), async
 });
 
 app.use(express.json());
+
+// Admin Orders API (protected)
+app.use('/api/admin/orders', requireAdmin, ordersApi);
 
 app.get('/api/admin/session', (req, res) => {
   res.json({ authenticated: Boolean(req.session?.isAdmin) });
