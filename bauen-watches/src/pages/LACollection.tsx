@@ -13,7 +13,7 @@ export default function LACollection() {
   return (
     <div className="bg-base text-textMain min-h-screen">
       {/* Optional: Minimal Collection Navigation */}
-      <nav className="w-full flex justify-center pt-8 pb-4">
+      <nav className="w-full flex justify-center pt-24 pb-4">
         <div className="flex gap-8 text-sm font-serif text-textSubtle">
           <Link to="/paris" className="hover:text-accent transition">Paris</Link>
           <span className="text-accent">Pacific</span>
@@ -75,44 +75,32 @@ export default function LACollection() {
       </section>
 
 
-      {/* Editorial Campaign Moment - Model Closeup */}
-      <div className="h-24 sm:h-32 md:h-40 lg:h-48" /> {/* Intentional vertical space above */}
-      <section className="relative w-[100vw] left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] h-[60vh] min-h-[380px] max-h-[700px] overflow-hidden flex items-center p-0 m-0">
-        <img
-          src="/bauen-content/artistic/Model%20closeup%201.jpg"
-          alt="Model closeup - Pacific Collection"
-          className="absolute inset-0 w-full h-full"
-          style={{
-            objectFit: 'cover',
-            objectPosition: '60% center',
-            transform: 'scale(0.92)',
-            transition: 'transform 1s cubic-bezier(0.4,0,0.2,1)'
-          }}
-        />
-        {/* Subtle dark gradient for text contrast */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/5 to-transparent pointer-events-none"></div>
-        <div
-          className="absolute left-0 w-full flex"
-          style={{
-            top: '65%',
-            justifyContent: 'flex-start',
-            pointerEvents: 'none',
-          }}
-        >
-          <span
-            className="ml-8 md:ml-16 text-[2.2rem] md:text-5xl font-serif font-normal tracking-tight select-none text-left"
-            style={{
-              color: '#F5F5F5',
-              textShadow: '0px 2px 8px rgba(0,0,0,0.4)',
-              background: 'rgba(0,0,0,0.01)',
-              padding: '0.1em 0.5em',
-              borderRadius: '0.2em',
-              userSelect: 'none',
-              maxWidth: 'min(90vw, 600px)',
-            }}
-          >
-            Worn your way.
-          </span>
+      {/* Editorial Duo — two contrasting campaign shots */}
+      <div className="h-16 sm:h-20" />
+      <section className="w-[100vw] relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] flex gap-1 h-[75vh] min-h-[460px] max-h-[820px] overflow-hidden">
+        {/* Left panel — warm / grassy / close-up */}
+        <div className="relative flex-1 overflow-hidden group">
+          <img
+            src="/bauen-content/artistic/IMG_5941.jpg"
+            alt="Pacific Collection — sunlit"
+            className="absolute inset-0 w-full h-full object-cover object-[center_45%] transition-transform duration-700 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent pointer-events-none" />
+          <div className="absolute bottom-8 left-8 z-10">
+            <span className="text-2xl md:text-4xl font-serif text-white drop-shadow-lg">Worn your way.</span>
+          </div>
+        </div>
+        {/* Right panel — cool / waterfront / standing */}
+        <div className="relative flex-1 overflow-hidden group">
+          <img
+            src="/bauen-content/artistic/IMG_5614.jpg"
+            alt="Pacific Collection — waterfront"
+            className="absolute inset-0 w-full h-full object-cover object-[center_28%] transition-transform duration-700 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent pointer-events-none" />
+          <div className="absolute bottom-8 right-8 z-10 text-right">
+            <span className="text-2xl md:text-4xl font-serif text-white drop-shadow-lg">Always in motion.</span>
+          </div>
         </div>
       </section>
 

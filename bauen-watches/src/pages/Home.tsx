@@ -13,9 +13,9 @@ export default function Home() {
       {/* Hero — full viewport */}
       <section className="relative w-full h-screen overflow-hidden">
         <img
-          src="/bauen-content/artistic/close%20deck%20shot%201.jpg"
+          src="/bauen-content/artistic/IMG_5922.jpg"
           alt="Bauen eyewear lifestyle"
-          className="absolute inset-0 w-full h-full object-cover object-center"
+          className="absolute inset-0 w-full h-full object-cover object-[center_25%]"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
         <div className="absolute bottom-16 left-8 md:left-16 z-10 text-white max-w-xl">
