@@ -34,7 +34,7 @@ export default function InventoryManagement() {
       })
 
       if (response.status === 401) {
-        navigate('/inventory-login')
+        navigate('/admin-login')
         return
       }
 
@@ -67,6 +67,7 @@ export default function InventoryManagement() {
   }, [items, query])
 
   const totalStock = items.reduce((sum, item) => sum + item.stock, 0)
+  const lowStockItems = items.filter((item) => item.stock <= 5)
 
   const updateStock = async (id: number, nextStock: number) => {
     try {
@@ -157,6 +158,21 @@ export default function InventoryManagement() {
           />
           {error && <p className="text-red-600 text-sm mt-3">{error}</p>}
         </div>
+
+        {lowStockItems.length > 0 && (
+          <div className="mb-6 bg-amber-50 border border-amber-200 rounded-lg px-5 py-4">
+            <p className="text-sm font-medium text-amber-800 mb-2">
+              ⚠ {lowStockItems.length} product{lowStockItems.length > 1 ? 's' : ''} running low
+            </p>
+            <ul className="flex flex-wrap gap-2">
+              {lowStockItems.map((item) => (
+                <li key={item.id} className="text-xs bg-white border border-amber-200 rounded px-2 py-1 text-amber-900">
+                  {item.name} — <span className={item.stock <= 2 ? 'text-red-600 font-semibold' : 'text-amber-700'}>{item.stock} left</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         <div className="bg-surface border border-border rounded-lg overflow-hidden">
           <div className="grid grid-cols-12 gap-4 px-5 py-3 border-b border-border text-xs uppercase tracking-wide text-textSubtle">

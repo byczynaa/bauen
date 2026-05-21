@@ -30,15 +30,15 @@ export default function Navbar() {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
-      className={`fixed w-full top-0 z-50 border-b transition-all duration-500 ${
+      className={`fixed w-full top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-white/95 backdrop-blur-md border-accent/40 shadow-lg'
-          : 'bg-white/90 backdrop-blur-md border-accent/20 shadow-sm'
+          ? 'bg-white/98 backdrop-blur-md shadow-sm border-b border-border'
+          : 'bg-[#FAF7F2]/80 backdrop-blur-sm border-b border-transparent'
       } text-black`}
     >
       <div className="max-w-6xl mx-auto flex justify-between items-center py-6 px-8 relative">
         <button
-          className="hover:text-accent transition"
+          className="text-black hover:text-accent transition"
           onClick={() => setMenuOpen(!menuOpen)}
         >
           <Menu size={24} strokeWidth={1.5} />
@@ -56,7 +56,7 @@ export default function Navbar() {
         </motion.div>
 
         <button
-          className="relative hover:text-accent transition"
+          className="relative text-black hover:text-accent transition"
           onClick={() => navigate('/cart')}
           aria-label="Cart"
         >
@@ -114,12 +114,6 @@ export default function Navbar() {
           )}
         </AnimatePresence>
       </div>
-      <motion.div
-        className="h-[1px] bg-accent absolute bottom-0 left-0"
-        initial={{ width: 0 }}
-        animate={{ width: scrolled ? '100%' : '0%' }}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
-      />
     </motion.nav>
   )
 }

@@ -47,7 +47,7 @@ export default function InventoryGuard({ children }: { children: React.ReactNode
   }
 
   if (status === 'denied') {
-    return <Navigate to="/inventory-login" replace />
+    return <Navigate to="/admin-login" replace />
   }
 
   return <>{children}</>

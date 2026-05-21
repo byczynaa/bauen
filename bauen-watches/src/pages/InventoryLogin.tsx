@@ -31,7 +31,7 @@ export default function InventoryLogin() {
         throw new Error(body?.error || 'Unable to sign in')
       }
 
-      navigate('/inventory')
+      navigate('/admin')
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Unable to sign in')
     } finally {
@@ -42,9 +42,9 @@ export default function InventoryLogin() {
   return (
     <section className="bg-base text-textMain min-h-screen py-24 px-6 flex items-center justify-center">
       <div className="max-w-md w-full bg-surface border border-border rounded-lg p-8">
-        <h1 className="text-3xl font-serif mb-3">Inventory Access</h1>
+        <h1 className="text-3xl font-serif mb-3">Admin Access</h1>
         <p className="text-textSubtle text-sm mb-8">
-          Enter your admin passcode to open Inventory Management.
+          Enter your admin passcode to continue.
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-5">

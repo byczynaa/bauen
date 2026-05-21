@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
@@ -11,6 +11,7 @@ import OrderConfirmed from './pages/OrderConfirmed'
 import InventoryManagement from './pages/InventoryManagement'
 import InventoryLogin from './pages/InventoryLogin'
 import AdminOrders from './pages/AdminOrders'
+import AdminMenu from './pages/AdminMenu'
 import InventoryGuard from './components/InventoryGuard'
 // import Configurateur from './pages/Configurateur'
 import Apropos from './pages/Apropos'
@@ -57,7 +58,7 @@ function AppRoutes() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/order-confirmed" element={<OrderConfirmed />} />
-            <Route path="/inventory-login" element={<InventoryLogin />} />
+            <Route path="/admin-login" element={<InventoryLogin />} />
             <Route
               path="/inventory"
               element={(
@@ -76,6 +77,14 @@ function AppRoutes() {
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/returns" element={<Returns />} />
             <Route path="/contact" element={<Contact />} />
+            <Route
+              path="/admin"
+              element={(
+                <InventoryGuard>
+                  <AdminMenu />
+                </InventoryGuard>
+              )}
+            />
             <Route path="/admin/orders" element={<AdminOrders />} />
           </Routes>
         </motion.main>

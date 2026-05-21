@@ -479,7 +479,15 @@ const PORT = 4242;
 
 try {
   await inventoryStore.initializeCatalog(productCatalog);
-  app.listen(PORT, () => console.log(`Stripe backend running on port ${PORT}`));
+  const server = app.listen(PORT, () => console.log(`Stripe backend running on port ${PORT}`));
+  server.on('error', (err) => {
+    if (err.code === 'EADDRINUSE') {
+      console.error(`Port ${PORT} is already in use. Kill the existing process and retry.`);
+    } else {
+      console.error('Server error:', err);
+    }
+    process.exit(1);
+  });
 } catch (err) {
   console.error('Failed to initialize inventory store:', err);
   process.exit(1);
