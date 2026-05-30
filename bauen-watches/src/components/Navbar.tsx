@@ -32,13 +32,13 @@ export default function Navbar() {
       transition={{ duration: 0.8, ease: 'easeOut' }}
       className={`fixed w-full top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-white/98 backdrop-blur-md shadow-sm border-b border-border'
-          : 'bg-[#FAF7F2]/80 backdrop-blur-sm border-b border-transparent'
-      } text-black`}
+          ? 'bg-white/98 backdrop-blur-md shadow-sm border-b border-border text-black'
+          : 'bg-gradient-to-b from-black/30 to-transparent text-white'
+      }`}
     >
       <div className="max-w-6xl mx-auto flex justify-between items-center py-6 px-8 relative">
         <button
-          className="text-black hover:text-accent transition"
+          className="hover:text-accent transition"
           onClick={() => setMenuOpen(!menuOpen)}
         >
           <Menu size={24} strokeWidth={1.5} />
@@ -50,13 +50,13 @@ export default function Navbar() {
           transition={{ delay: 0.4, duration: 1 }}
           className="absolute left-1/2 transform -translate-x-1/2"
         >
-          <Link to="/" className="text-3xl font-serif tracking-wide no-underline text-black hover:text-accent">
+          <Link to="/" className="text-3xl font-serif tracking-wide no-underline hover:text-accent">
             BAUEN
           </Link>
         </motion.div>
 
         <button
-          className="relative text-black hover:text-accent transition"
+          className="relative hover:text-accent transition"
           onClick={() => navigate('/cart')}
           aria-label="Cart"
         >

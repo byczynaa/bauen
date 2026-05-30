@@ -12,16 +12,24 @@ export default function Paris() {
   return (
     <div className="text-textMain">
       {/* Hero Section with Lifestyle Image */}
-      <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
-        <img
-          src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1600&q=80"
-          alt="Paris"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black/40"></div>
-        <h1 className="relative text-5xl md:text-6xl font-serif text-white tracking-wide">
-          Paris Collection
-        </h1>
+      <section className="relative h-[90vh] flex items-end justify-start overflow-hidden">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/bauen-content/artistic/IMG_6885.jpg"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        >
+          <source src="/bauen-content/artistic/IMG_6906.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+        <div className="relative z-10 pb-16 pl-8 md:pl-16 max-w-xl">
+          <p className="font-mono text-xs uppercase tracking-widest mb-4 text-white/70">Paris Collection — 2026</p>
+          <h1 className="text-5xl md:text-6xl font-serif text-white leading-tight mb-6">
+            Precision from<br />the 6th arrondissement.
+          </h1>
+        </div>
       </section>
 
       {/* Editorial Break - Tagline Section */}
@@ -66,6 +74,47 @@ export default function Paris() {
           <Button variant="primary" className="px-8 py-4 text-lg">Start Customizing</Button>
         </div>
       </section> */}
+
+      {/* Editorial Duo — new Paris model campaign shots */}
+      <section className="w-[100vw] relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] flex gap-1 h-[80vh] min-h-[500px] overflow-hidden">
+        <div className="relative flex-1 overflow-hidden group">
+          <img
+            src="/bauen-content/artistic/IMG_6884.jpg"
+            alt="Paris Collection — arch"
+            className="absolute inset-0 w-full h-full object-cover object-[center_20%] transition-transform duration-700 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent pointer-events-none" />
+          <div className="absolute bottom-8 left-8 z-10">
+            <span className="text-2xl md:text-4xl font-serif text-white drop-shadow-lg">Worn in the city.</span>
+          </div>
+        </div>
+        <div className="relative flex-1 overflow-hidden group">
+          <img
+            src="/bauen-content/artistic/IMG_6857.jpg"
+            alt="Paris Collection — street"
+            className="absolute inset-0 w-full h-full object-cover object-[center_20%] transition-transform duration-700 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent pointer-events-none" />
+          <div className="absolute bottom-8 right-8 z-10 text-right">
+            <span className="text-2xl md:text-4xl font-serif text-white drop-shadow-lg">Built for Paris.</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Full-width campaign image */}
+      <section className="relative w-full h-[75vh] min-h-[480px] overflow-hidden">
+        <img
+          src="/bauen-content/artistic/IMG_6851.jpg"
+          alt="Paris Collection — campaign"
+          className="absolute inset-0 w-full h-full object-cover object-[center_15%]"
+          style={{ filter: 'brightness(0.9)' }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+        <div className="absolute bottom-12 left-8 md:left-16 z-10 text-white max-w-md">
+          <p className="font-mono text-xs uppercase tracking-widest mb-3 opacity-60">The Paris Collection</p>
+          <h2 className="text-3xl md:text-4xl font-serif leading-tight">Every detail,<br />considered.</h2>
+        </div>
+      </section>
     </div>
   );
 }

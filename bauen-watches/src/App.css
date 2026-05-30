@@ -5,6 +5,25 @@
   text-align: center;
 }
 
+@keyframes vhsGrain {
+  0%   { transform: translate(0, 0) scaleY(1); }
+  15%  { transform: translate(-3%, 2%) scaleY(1.01); }
+  30%  { transform: translate(4%, -1%) scaleY(0.99); }
+  45%  { transform: translate(-2%, 4%) scaleY(1.01); }
+  60%  { transform: translate(3%, -3%) scaleY(1); }
+  75%  { transform: translate(-4%, 1%) scaleY(0.99); }
+  90%  { transform: translate(2%, -2%) scaleY(1); }
+  100% { transform: translate(0, 0) scaleY(1); }
+}
+
+@keyframes vhsTracking {
+  0%   { top: -20%; opacity: 0; }
+  5%   { opacity: 0.6; }
+  15%  { top: 110%; opacity: 0.4; }
+  16%  { top: -20%; opacity: 0; }
+  100% { top: -20%; opacity: 0; }
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

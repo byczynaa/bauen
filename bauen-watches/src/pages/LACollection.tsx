@@ -93,9 +93,9 @@ export default function LACollection() {
         {/* Right panel — cool / waterfront / standing */}
         <div className="relative flex-1 overflow-hidden group">
           <img
-            src="/bauen-content/artistic/IMG_5614.jpg"
+            src="/bauen-content/artistic/IMG_5811.jpg"
             alt="Pacific Collection — waterfront"
-            className="absolute inset-0 w-full h-full object-cover object-[center_28%] transition-transform duration-700 group-hover:scale-105"
+            className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent pointer-events-none" />
           <div className="absolute bottom-8 right-8 z-10 text-right">

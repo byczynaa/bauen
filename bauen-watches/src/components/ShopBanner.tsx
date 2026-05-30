@@ -4,9 +4,9 @@ export default function ShopBanner() {
   return (
     <section className="relative h-[40vh] w-full overflow-hidden mb-8">
       <img
-        src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80"
-        alt="Horizon mer"
-        className="w-full h-full object-cover"
+        src="/bauen-content/artistic/Model closeup 1.jpg"
+        alt="Bauen eyewear"
+        className="w-full h-full object-cover object-[center_35%]"
         draggable={false}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-black/10"></div>
